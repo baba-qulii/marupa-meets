@@ -1,0 +1,10 @@
+# すべて無視
+*
+
+# 必要なファイルだけ許可
+!marupa-meets.html
+!NOA_9227.jpg
+!会社紹介.pdf
+!レンタル表.pdf
+!パレット活用事例.pdf
+!.gitignore
