@@ -46,14 +46,19 @@
     /* ITEM SECTION */
     .item-section { background: rgba(255,255,255,0.45); border-top: 0.5px solid #c8c0b0; padding: 48px 24px 64px; }
     .item-inner { max-width: 860px; margin: 0 auto; }
-    .item-eyebrow { font-size: 11px; letter-spacing: 0.18em; color: var(--moss-light); text-transform: uppercase; margin-bottom: 32px; }
-    .item-layout { display: grid; grid-template-columns: 240px 1fr; gap: 40px; align-items: start; }
-    .item-product-img { width: 100%; border-radius: 8px; aspect-ratio: 2/3; object-fit: cover; }
-    .item-content { display: flex; flex-direction: column; gap: 20px; padding-top: 4px; }
-    .item-name { font-size: 20px; font-weight: 500; color: var(--bg3); margin-bottom: 10px; }
-    .item-desc { font-size: 14px; color: #3a3830; line-height: 1.9; }
-    .item-scenes { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-    .item-scene-img { width: 100%; border-radius: 6px; aspect-ratio: 4/3; object-fit: cover; }
+    .item-eyebrow { font-size: 11px; letter-spacing: 0.18em; color: var(--moss-light); text-transform: uppercase; margin-bottom: 28px; }
+    .items-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .item-card { background: #fff; border-radius: 10px; overflow: hidden; border: 0.5px solid #e0d8cc; }
+    .item-card-img { aspect-ratio: 3/4; overflow: hidden; background: var(--bg2); display: flex; align-items: center; justify-content: center; }
+    .item-card-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .item-card-placeholder { font-size: 11px; color: rgba(255,255,255,0.2); letter-spacing: 0.1em; }
+    .item-card-body { padding: 16px 16px 20px; }
+    .item-card-name { font-size: 14px; font-weight: 500; color: var(--bg3); margin-bottom: 14px; }
+    .item-specs { display: flex; flex-direction: column; }
+    .item-spec { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; font-size: 11px; padding: 7px 0; border-bottom: 0.5px solid #ece6dc; }
+    .item-spec:last-child { border-bottom: none; }
+    .item-spec dt { color: var(--moss-light); letter-spacing: 0.05em; white-space: nowrap; flex-shrink: 0; }
+    .item-spec dd { color: #3a3830; text-align: right; }
 
     /* VOL COMING SOON */
     .vol-soon { background: var(--bg3); border-top: 0.5px solid rgba(255,255,255,0.12); border-bottom: 0.5px solid rgba(255,255,255,0.12); padding: 80px 24px; text-align: center; }
@@ -129,8 +134,8 @@
       .concept-inner { grid-template-columns: 1fr; }
       .hero-title { font-size: 30px; }
       .cta-buttons { flex-direction: column; align-items: center; }
-      .item-layout { grid-template-columns: 1fr; }
-      .item-product-img { aspect-ratio: auto; height: auto; object-fit: initial; }
+      .items-grid { grid-template-columns: 1fr; }
+      .item-card-img { aspect-ratio: 4/3; }
     }
   </style>
 </head>
@@ -169,18 +174,53 @@
     <div class="item-section">
       <div class="item-inner">
         <p class="item-eyebrow">この動画で活躍したアイテム</p>
-        <div class="item-layout">
-          <img src="pallet-yatai.jpg" class="item-product-img" alt="パレット屋台"/>
-          <div class="item-content">
-            <div>
-              <h3 class="item-name">パレット屋台</h3>
-              <p class="item-desc">木製パレットを組み合わせてつくられた屋台。軽やかでありながら十分な強度を持ち、ひとりでも組み立てられる扱いやすさで、場を支えます。</p>
+        <div class="items-grid">
+
+          <!-- パレット屋台 -->
+          <div class="item-card">
+            <div class="item-card-img">
+              <img src="pallet-yatai.jpg" alt="パレット屋台"/>
             </div>
-            <div class="item-scenes">
-              <img src="honnya-scene.jpg" class="item-scene-img" alt="ほんやさんの様子"/>
-              <img src="honnya-kids.jpg" class="item-scene-img" alt="ほんやさんの子どもたち"/>
+            <div class="item-card-body">
+              <h3 class="item-card-name">パレット屋台</h3>
+              <dl class="item-specs">
+                <div class="item-spec"><dt>サイズ</dt><dd>W990×D434×H1700</dd></div>
+                <div class="item-spec"><dt>重量</dt><dd>約12㎏</dd></div>
+                <div class="item-spec"><dt>レンタル料金</dt><dd>4,400円〜</dd></div>
+              </dl>
             </div>
           </div>
+
+          <!-- パレットチェア -->
+          <div class="item-card">
+            <div class="item-card-img">
+              <span class="item-card-placeholder">画像準備中</span>
+            </div>
+            <div class="item-card-body">
+              <h3 class="item-card-name">パレットチェア</h3>
+              <dl class="item-specs">
+                <div class="item-spec"><dt>サイズ</dt><dd>W400×D400×H450</dd></div>
+                <div class="item-spec"><dt>重量</dt><dd>約3.5㎏</dd></div>
+                <div class="item-spec"><dt>レンタル料金</dt><dd>550円〜</dd></div>
+              </dl>
+            </div>
+          </div>
+
+          <!-- まるぱパレット -->
+          <div class="item-card">
+            <div class="item-card-img">
+              <span class="item-card-placeholder">画像準備中</span>
+            </div>
+            <div class="item-card-body">
+              <h3 class="item-card-name">まるぱパレット</h3>
+              <dl class="item-specs">
+                <div class="item-spec"><dt>サイズ</dt><dd>W270×D270×H84</dd></div>
+                <div class="item-spec"><dt>重量</dt><dd>約1㎏</dd></div>
+                <div class="item-spec"><dt>レンタル料金</dt><dd>260円〜</dd></div>
+              </dl>
+            </div>
+          </div>
+
         </div>
       </div>
     </div>
@@ -201,18 +241,50 @@
     <div class="item-section">
       <div class="item-inner">
         <p class="item-eyebrow">この動画で活躍したアイテム</p>
-        <div class="item-layout">
-          <img src="byoin-DSC02787.jpg" class="item-product-img" style="aspect-ratio:4/3;" alt="びょういんの様子"/>
-          <div class="item-content">
-            <div>
-              <h3 class="item-name" style="color:#aaa;">アイテム名 準備中</h3>
-              <p class="item-desc" style="color:#aaa;">詳細は近日公開予定です。</p>
+        <div class="items-grid">
+
+          <div class="item-card">
+            <div class="item-card-img">
+              <img src="byoin-DSC02787.jpg" alt="びょういんの様子"/>
             </div>
-            <div class="item-scenes">
-              <img src="byoin-DSC02812.jpg" class="item-scene-img" alt="びょういんの展示"/>
-              <img src="byoin-DSC02820.jpg" class="item-scene-img" alt="びょういんの様子"/>
+            <div class="item-card-body">
+              <h3 class="item-card-name" style="color:#aaa;">アイテム名 準備中</h3>
+              <dl class="item-specs">
+                <div class="item-spec"><dt>サイズ</dt><dd style="color:#bbb;">—</dd></div>
+                <div class="item-spec"><dt>重量</dt><dd style="color:#bbb;">—</dd></div>
+                <div class="item-spec"><dt>レンタル料金</dt><dd style="color:#bbb;">—</dd></div>
+              </dl>
             </div>
           </div>
+
+          <div class="item-card">
+            <div class="item-card-img">
+              <img src="byoin-DSC02812.jpg" alt="びょういんの展示"/>
+            </div>
+            <div class="item-card-body">
+              <h3 class="item-card-name" style="color:#aaa;">アイテム名 準備中</h3>
+              <dl class="item-specs">
+                <div class="item-spec"><dt>サイズ</dt><dd style="color:#bbb;">—</dd></div>
+                <div class="item-spec"><dt>重量</dt><dd style="color:#bbb;">—</dd></div>
+                <div class="item-spec"><dt>レンタル料金</dt><dd style="color:#bbb;">—</dd></div>
+              </dl>
+            </div>
+          </div>
+
+          <div class="item-card">
+            <div class="item-card-img">
+              <img src="byoin-DSC02820.jpg" alt="びょういんの様子"/>
+            </div>
+            <div class="item-card-body">
+              <h3 class="item-card-name" style="color:#aaa;">アイテム名 準備中</h3>
+              <dl class="item-specs">
+                <div class="item-spec"><dt>サイズ</dt><dd style="color:#bbb;">—</dd></div>
+                <div class="item-spec"><dt>重量</dt><dd style="color:#bbb;">—</dd></div>
+                <div class="item-spec"><dt>レンタル料金</dt><dd style="color:#bbb;">—</dd></div>
+              </dl>
+            </div>
+          </div>
+
         </div>
       </div>
     </div>
