@@ -27,23 +27,44 @@
     .deco-line { margin: 48px auto 0; width: 1px; height: 40px; background: rgba(255,255,255,0.12); }
 
     /* SERIES */
-    .series-section { background: var(--cream); border-top: 0.5px solid #b8b0a0; border-bottom: 0.5px solid #b8b0a0; }
-    .section { padding: 72px 24px; max-width: 860px; margin: 0 auto; }
+    .series-intro { background: var(--cream); border-top: 0.5px solid #b8b0a0; padding: 28px 24px; text-align: center; }
+    .series-intro-label { font-size: 11px; letter-spacing: 0.22em; color: var(--moss-light); text-transform: uppercase; }
     .section-label { font-size: 11px; letter-spacing: 0.18em; color: var(--moss-light); text-transform: uppercase; margin-bottom: 10px; }
     .section-title { font-size: 22px; font-weight: 500; color: var(--bg3); margin-bottom: 8px; }
-    .section-body { font-size: 14px; color: #3a3830; line-height: 1.9; max-width: 560px; margin-bottom: 40px; }
+    .section-body { font-size: 14px; color: #3a3830; line-height: 1.9; max-width: 560px; }
 
-    .series-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; }
-    .series-card { background: rgba(255,255,255,0.5); border: 0.5px solid #b8b0a0; border-radius: 12px; overflow: hidden; cursor: pointer; transition: border-color 0.2s; }
-    .series-card:hover { border-color: #8a8070; }
-    .series-thumb { height: 148px; background: var(--bg2); display: flex; align-items: center; justify-content: center; position: relative; }
-    .series-thumb-tag { position: absolute; bottom: 10px; left: 12px; font-size: 10px; color: var(--moss-pale); background: rgba(255,255,255,0.12); padding: 3px 10px; border-radius: 20px; letter-spacing: 0.08em; }
-    .series-body { padding: 16px; }
-    .series-no { font-size: 11px; color: var(--moss-light); margin-bottom: 4px; letter-spacing: 0.1em; }
-    .series-name { font-size: 15px; font-weight: 500; color: var(--bg3); margin-bottom: 6px; }
-    .series-desc { font-size: 12px; color: #3a3830; line-height: 1.75; }
-    .play-badge { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; color: var(--wood); margin-top: 12px; text-decoration: none; }
-    .play-icon { width: 22px; height: 22px; border-radius: 50%; border: 1px solid var(--wood); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    /* VOL SECTIONS */
+    .vol-section { background: var(--cream); border-top: 0.5px solid #b8b0a0; }
+    .vol-inner { max-width: 860px; margin: 0 auto; padding: 56px 24px 48px; }
+    .vol-eyebrow { font-size: 11px; letter-spacing: 0.18em; color: var(--moss-light); text-transform: uppercase; margin-bottom: 10px; }
+    .vol-title { font-size: 24px; font-weight: 500; color: var(--bg3); margin-bottom: 12px; }
+    .vol-desc { font-size: 14px; color: #3a3830; line-height: 1.9; margin-bottom: 28px; max-width: 560px; }
+    .vol-video { border-radius: 12px; overflow: hidden; }
+    .vol-video-wrap { padding: 56.25% 0 0 0; position: relative; }
+    .vol-video-wrap iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+
+    /* ITEM SECTION */
+    .item-section { background: rgba(255,255,255,0.45); border-top: 0.5px solid #c8c0b0; padding: 48px 24px 64px; }
+    .item-inner { max-width: 860px; margin: 0 auto; }
+    .item-eyebrow { font-size: 11px; letter-spacing: 0.18em; color: var(--moss-light); text-transform: uppercase; margin-bottom: 28px; }
+    .items-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .item-card { background: #fff; border-radius: 10px; overflow: hidden; border: 0.5px solid #e0d8cc; }
+    .item-card-img { aspect-ratio: 3/4; overflow: hidden; background: var(--bg2); display: flex; align-items: center; justify-content: center; }
+    .item-card-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .item-card-placeholder { font-size: 11px; color: rgba(255,255,255,0.2); letter-spacing: 0.1em; }
+    .item-card-body { padding: 16px 16px 20px; }
+    .item-card-name { font-size: 14px; font-weight: 500; color: var(--bg3); margin-bottom: 14px; }
+    .item-specs { display: flex; flex-direction: column; }
+    .item-spec { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; font-size: 11px; padding: 7px 0; border-bottom: 0.5px solid #ece6dc; }
+    .item-spec:last-child { border-bottom: none; }
+    .item-spec dt { color: var(--moss-light); letter-spacing: 0.05em; white-space: nowrap; flex-shrink: 0; }
+    .item-spec dd { color: #3a3830; text-align: right; }
+
+    /* VOL COMING SOON */
+    .vol-soon { background: var(--bg3); border-top: 0.5px solid rgba(255,255,255,0.12); border-bottom: 0.5px solid rgba(255,255,255,0.12); padding: 80px 24px; text-align: center; }
+    .vol-soon-eyebrow { font-size: 11px; letter-spacing: 0.18em; color: var(--moss-pale); text-transform: uppercase; margin-bottom: 14px; }
+    .vol-soon-title { font-size: 22px; font-weight: 500; color: var(--white); margin-bottom: 10px; }
+    .vol-soon-sub { font-size: 13px; color: rgba(255,255,255,0.4); letter-spacing: 0.06em; }
 
     /* CONCEPT */
     .concept-section { position: relative; background: var(--bg3); padding: 72px 24px; border-top: 0.5px solid rgba(255,255,255,0.12); border-bottom: 0.5px solid rgba(255,255,255,0.12); }
@@ -113,6 +134,8 @@
       .concept-inner { grid-template-columns: 1fr; }
       .hero-title { font-size: 30px; }
       .cta-buttons { flex-direction: column; align-items: center; }
+      .items-grid { grid-template-columns: 1fr; }
+      .item-card-img { aspect-ratio: 4/3; }
     }
   </style>
 </head>
@@ -130,67 +153,148 @@
     </div>
   </section>
 
-  <!-- SERIES -->
-  <div class="series-section">
-  <div class="section">
-    <p class="section-label">Series</p>
-    <h2 class="section-title">marupa meets ... シリーズ</h2>
-    <p class="section-body">それぞれの場所で、パレットはどんな役割を果たすのか。動画と共にご覧ください。</p>
-    <div class="series-grid">
+  <!-- SERIES INTRO -->
+  <div class="series-intro">
+    <p class="series-intro-label">Series</p>
+  </div>
 
-      <div class="series-card">
-        <div style="padding:56.25% 0 0 0;position:relative;">
-          <iframe src="https://player.vimeo.com/video/1136961951?h=beeb276f13&badge=0&autopause=0&player_id=0&app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="marupa meets ほんやさん v2"></iframe>
+  <!-- VOL.01 -->
+  <div class="vol-section">
+    <div class="vol-inner">
+      <p class="vol-eyebrow">Series · vol.01</p>
+      <h2 class="vol-title">marupa meets ほんやさん</h2>
+      <p class="vol-desc">子どもたちの本が並ぶ一日限りの本屋さん。その場をかたちづくる土台として、パレットが活躍。</p>
+      <div class="vol-video">
+        <div class="vol-video-wrap">
+          <iframe src="https://player.vimeo.com/video/1136961951?h=beeb276f13&badge=0&autopause=0&player_id=0&app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" title="marupa meets ほんやさん v2"></iframe>
         </div>
         <script src="https://player.vimeo.com/api/player.js"></script>
-        <div class="series-body">
-          <p class="series-no">vol.01</p>
-          <p class="series-name">marupa meets ほんやさん</p>
-          <p class="series-desc">子どもたちの本が並ぶ一日限りの本屋さん。その場をかたちづくる土台として、パレットが活躍。</p>
+      </div>
+    </div>
+    <div class="item-section">
+      <div class="item-inner">
+        <p class="item-eyebrow">この動画で活躍したアイテム</p>
+        <div class="items-grid">
+
+          <!-- パレット屋台 -->
+          <div class="item-card">
+            <div class="item-card-img">
+              <img src="pallet-yatai.jpg" alt="パレット屋台"/>
+            </div>
+            <div class="item-card-body">
+              <h3 class="item-card-name">パレット屋台</h3>
+              <dl class="item-specs">
+                <div class="item-spec"><dt>サイズ</dt><dd>W990×D434×H1700</dd></div>
+                <div class="item-spec"><dt>重量</dt><dd>約12㎏</dd></div>
+                <div class="item-spec"><dt>レンタル料金</dt><dd>4,400円〜</dd></div>
+              </dl>
+            </div>
+          </div>
+
+          <!-- パレットチェア -->
+          <div class="item-card">
+            <div class="item-card-img">
+              <img src="chair-DSC08352.jpg" alt="パレットチェア"/>
+            </div>
+            <div class="item-card-body">
+              <h3 class="item-card-name">パレットチェア</h3>
+              <dl class="item-specs">
+                <div class="item-spec"><dt>サイズ</dt><dd>W400×D400×H450</dd></div>
+                <div class="item-spec"><dt>重量</dt><dd>約3.5㎏</dd></div>
+                <div class="item-spec"><dt>レンタル料金</dt><dd>550円〜</dd></div>
+              </dl>
+            </div>
+          </div>
+
+          <!-- まるぱパレット -->
+          <div class="item-card">
+            <div class="item-card-img">
+              <img src="pallet-DSC00683.jpg" alt="まるぱパレット">
+            </div>
+            <div class="item-card-body">
+              <h3 class="item-card-name">まるぱパレット</h3>
+              <dl class="item-specs">
+                <div class="item-spec"><dt>サイズ</dt><dd>W270×D270×H84</dd></div>
+                <div class="item-spec"><dt>重量</dt><dd>約1㎏</dd></div>
+                <div class="item-spec"><dt>レンタル料金</dt><dd>260円〜</dd></div>
+              </dl>
+            </div>
+          </div>
+
         </div>
       </div>
-
-      <div class="series-card">
-        <div style="padding:56.25% 0 0 0;position:relative;">
-          <iframe src="https://player.vimeo.com/video/1163559615?h=838d547230&badge=0&autopause=0&player_id=0&app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="marupameetsvol2_v2"></iframe>
-        </div>
-        <div class="series-body">
-          <p class="series-no">vol.02</p>
-          <p class="series-name">marupa meets びょういん</p>
-          <p class="series-desc">病院という場所に、にぎわいが生まれる。木の温もりが、人と場のあいだにやさしく広がっていく。</p>
-        </div>
-      </div>
-
-      <div class="series-card">
-        <div class="series-thumb" style="background:var(--bg3);">
-          <svg width="20%" viewBox="0 0 100 140" fill="white" xmlns="http://www.w3.org/2000/svg" opacity="0.2">
-            <!-- 幹 -->
-            <rect x="43" y="95" width="14" height="38" rx="4"/>
-            <!-- 根元 -->
-            <ellipse cx="50" cy="133" rx="22" ry="5"/>
-            <!-- 樹冠（3層） -->
-            <ellipse cx="50" cy="85" rx="40" ry="26"/>
-            <ellipse cx="50" cy="62" rx="32" ry="22"/>
-            <ellipse cx="50" cy="42" rx="22" ry="18"/>
-            <ellipse cx="50" cy="26" rx="13" ry="12"/>
-          </svg>
-          <span class="series-thumb-tag">coming soon</span>
-        </div>
-        <div class="series-body">
-          <p class="series-no">vol.03</p>
-          <p class="series-name">marupa meets ...</p>
-          <p class="series-desc">次はどんな出会いがあるかな。</p>
-          <span class="play-badge" style="opacity:0.4;">
-            <span class="play-icon">
-              <svg width="8" height="8" viewBox="0 0 8 8"><polygon points="2,1 7,4 2,7" fill="#c4a06a"/></svg>
-            </span>
-            近日公開
-          </span>
-        </div>
-      </div>
-
     </div>
   </div>
+
+  <!-- VOL.02 -->
+  <div class="vol-section">
+    <div class="vol-inner">
+      <p class="vol-eyebrow">Series · vol.02</p>
+      <h2 class="vol-title">marupa meets びょういん</h2>
+      <p class="vol-desc">病院という場所に、にぎわいが生まれる。木の温もりが、人と場のあいだにやさしく広がっていく。</p>
+      <div class="vol-video">
+        <div class="vol-video-wrap">
+          <iframe src="https://player.vimeo.com/video/1185811536?h=93fed4a9ed&badge=0&autopause=0&player_id=0&app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" title="marupa meets ... びょういん v3"></iframe>
+        </div>
+      </div>
+    </div>
+    <div class="item-section">
+      <div class="item-inner">
+        <p class="item-eyebrow">この動画で活躍したアイテム</p>
+        <div class="items-grid">
+
+          <div class="item-card">
+            <div class="item-card-img">
+              <img src="byoin-DSC02787.jpg" alt="びょういんの様子"/>
+            </div>
+            <div class="item-card-body">
+              <h3 class="item-card-name" style="color:#aaa;">アイテム名 準備中</h3>
+              <dl class="item-specs">
+                <div class="item-spec"><dt>サイズ</dt><dd style="color:#bbb;">—</dd></div>
+                <div class="item-spec"><dt>重量</dt><dd style="color:#bbb;">—</dd></div>
+                <div class="item-spec"><dt>レンタル料金</dt><dd style="color:#bbb;">—</dd></div>
+              </dl>
+            </div>
+          </div>
+
+          <div class="item-card">
+            <div class="item-card-img">
+              <img src="byoin-DSC02812.jpg" alt="びょういんの展示"/>
+            </div>
+            <div class="item-card-body">
+              <h3 class="item-card-name" style="color:#aaa;">アイテム名 準備中</h3>
+              <dl class="item-specs">
+                <div class="item-spec"><dt>サイズ</dt><dd style="color:#bbb;">—</dd></div>
+                <div class="item-spec"><dt>重量</dt><dd style="color:#bbb;">—</dd></div>
+                <div class="item-spec"><dt>レンタル料金</dt><dd style="color:#bbb;">—</dd></div>
+              </dl>
+            </div>
+          </div>
+
+          <div class="item-card">
+            <div class="item-card-img">
+              <img src="byoin-DSC02820.jpg" alt="びょういんの様子"/>
+            </div>
+            <div class="item-card-body">
+              <h3 class="item-card-name" style="color:#aaa;">アイテム名 準備中</h3>
+              <dl class="item-specs">
+                <div class="item-spec"><dt>サイズ</dt><dd style="color:#bbb;">—</dd></div>
+                <div class="item-spec"><dt>重量</dt><dd style="color:#bbb;">—</dd></div>
+                <div class="item-spec"><dt>レンタル料金</dt><dd style="color:#bbb;">—</dd></div>
+              </dl>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- VOL.03 -->
+  <div class="vol-soon">
+    <p class="vol-soon-eyebrow">Series · vol.03</p>
+    <h2 class="vol-soon-title">marupa meets ...</h2>
+    <p class="vol-soon-sub">次はどんな出会いがあるかな。近日公開。</p>
   </div>
 
   <!-- CONCEPT -->
