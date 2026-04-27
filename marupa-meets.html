@@ -43,8 +43,23 @@
     .vol-video-wrap { padding: 56.25% 0 0 0; position: relative; }
     .vol-video-wrap iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
 
+    /* VOL BRIDGE */
+    .vol-bridge { background: var(--cream); padding: 8px 24px 0; display: flex; flex-direction: column; align-items: center; gap: 10px; }
+    .vol-bridge-arrows { display: flex; flex-direction: column; align-items: center; gap: 0; }
+    .vol-bridge-chevron { color: var(--moss-light); opacity: 0; animation: bridge-flow 2s ease-in-out infinite; }
+    .vol-bridge-chevron:nth-child(1) { animation-delay: 0s; }
+    .vol-bridge-chevron:nth-child(2) { animation-delay: 0.35s; }
+    .vol-bridge-chevron:nth-child(3) { animation-delay: 0.7s; }
+    @keyframes bridge-flow {
+      0%   { opacity: 0; transform: translateY(-6px); }
+      25%  { opacity: 0.7; }
+      60%  { opacity: 0.7; }
+      100% { opacity: 0; transform: translateY(6px); }
+    }
+    .vol-bridge-label { font-size: 11px; letter-spacing: 0.18em; color: var(--moss-light); text-transform: uppercase; padding-bottom: 32px; }
+
     /* ITEM SECTION */
-    .item-section { background: rgba(255,255,255,0.45); border-top: 0.5px solid #c8c0b0; padding: 48px 24px 64px; }
+    .item-section { background: rgba(255,255,255,0.45); border-top: 0.5px solid #c8c0b0; padding: 40px 24px 64px; }
     .item-inner { max-width: 860px; margin: 0 auto; }
     .item-eyebrow { font-size: 11px; letter-spacing: 0.18em; color: var(--moss-light); text-transform: uppercase; margin-bottom: 28px; }
     .items-grid { display: flex; flex-direction: column; gap: 16px; }
@@ -182,9 +197,16 @@
         <script src="https://player.vimeo.com/api/player.js"></script>
       </div>
     </div>
+    <div class="vol-bridge">
+      <div class="vol-bridge-arrows">
+        <svg class="vol-bridge-chevron" width="24" height="14" viewBox="0 0 24 14" fill="none"><polyline points="2,2 12,12 22,2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <svg class="vol-bridge-chevron" width="24" height="14" viewBox="0 0 24 14" fill="none"><polyline points="2,2 12,12 22,2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <svg class="vol-bridge-chevron" width="24" height="14" viewBox="0 0 24 14" fill="none"><polyline points="2,2 12,12 22,2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <p class="vol-bridge-label">この動画で活躍したアイテム</p>
+    </div>
     <div class="item-section">
       <div class="item-inner">
-        <p class="item-eyebrow">この動画で活躍したアイテム</p>
         <div class="items-grid">
 
           <!-- パレット屋台 -->
@@ -277,9 +299,16 @@
         </div>
       </div>
     </div>
+    <div class="vol-bridge">
+      <div class="vol-bridge-arrows">
+        <svg class="vol-bridge-chevron" width="24" height="14" viewBox="0 0 24 14" fill="none"><polyline points="2,2 12,12 22,2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <svg class="vol-bridge-chevron" width="24" height="14" viewBox="0 0 24 14" fill="none"><polyline points="2,2 12,12 22,2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <svg class="vol-bridge-chevron" width="24" height="14" viewBox="0 0 24 14" fill="none"><polyline points="2,2 12,12 22,2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <p class="vol-bridge-label">この動画で活躍したアイテム</p>
+    </div>
     <div class="item-section">
       <div class="item-inner">
-        <p class="item-eyebrow">この動画で活躍したアイテム</p>
         <div class="items-grid">
 
           <div class="item-card">
