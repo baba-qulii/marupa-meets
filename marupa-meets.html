@@ -624,48 +624,64 @@
   </script>
 
   <script>
-    function initGalleryTouch(track) {
-      var startX = 0, currentX = 0, dragging = false, baseX = 0;
+    function initGallery(track, durationSec) {
+      // CSSアニメーションを無効化してJSで管理
+      track.style.animation = 'none';
+      track.style.webkitAnimation = 'none';
 
-      function getTranslateX(el) {
-        var t = window.getComputedStyle(el).transform || window.getComputedStyle(el).webkitTransform;
-        if (!t || t === 'none') return 0;
-        var m = t.match(/matrix.*\((.+)\)/);
-        return m ? parseFloat(m[1].split(', ')[4]) : 0;
+      var offset = 0;
+      var isDragging = false;
+      var lastTouchX = 0;
+      var lastTs = null;
+
+      function halfWidth() { return track.scrollWidth / 2; }
+
+      function step(ts) {
+        if (lastTs === null) lastTs = ts;
+        var dt = Math.min(ts - lastTs, 50); // 最大50msで制限（タブ切替対策）
+        lastTs = ts;
+
+        if (!isDragging) {
+          var hw = halfWidth();
+          if (hw > 0) {
+            offset -= hw / (durationSec * 1000) * dt;
+            if (offset < -hw) offset += hw;
+          }
+        }
+        track.style.transform = 'translateX(' + offset + 'px)';
+        track.style.webkitTransform = 'translateX(' + offset + 'px)';
+        requestAnimationFrame(step);
       }
 
       track.addEventListener('touchstart', function(e) {
-        dragging = true;
-        startX = e.touches[0].clientX;
-        baseX = getTranslateX(track);
-        track.style.animationPlayState = 'paused';
-        track.style.webkitAnimationPlayState = 'paused';
-        track.style.transform = 'translateX(' + baseX + 'px)';
+        isDragging = true;
+        lastTouchX = e.touches[0].clientX;
       }, { passive: true });
 
       track.addEventListener('touchmove', function(e) {
-        if (!dragging) return;
-        currentX = baseX + (e.touches[0].clientX - startX);
-        track.style.transform = 'translateX(' + currentX + 'px)';
+        if (!isDragging) return;
+        var dx = e.touches[0].clientX - lastTouchX;
+        lastTouchX = e.touches[0].clientX;
+        offset += dx;
+        var hw = halfWidth();
+        if (hw > 0) {
+          while (offset < -hw) offset += hw;
+          while (offset > 0) offset -= hw;
+        }
       }, { passive: true });
 
       track.addEventListener('touchend', function() {
-        if (!dragging) return;
-        dragging = false;
-        var halfWidth = track.scrollWidth / 2;
-        var normalized = ((currentX % -halfWidth) + halfWidth) % halfWidth * -1;
-        if (normalized > 0) normalized -= halfWidth;
-        var duration = parseFloat(window.getComputedStyle(track).animationDuration) || 50;
-        var delay = (normalized / -halfWidth) * duration;
-        track.style.animationDelay = '-' + delay + 's';
-        track.style.webkitAnimationDelay = '-' + delay + 's';
-        track.style.transform = '';
-        track.style.animationPlayState = 'running';
-        track.style.webkitAnimationPlayState = 'running';
+        isDragging = false;
+        lastTs = null; // リセットして大きなジャンプを防止
       }, { passive: true });
+
+      requestAnimationFrame(step);
     }
 
-    document.querySelectorAll('.gallery-track, .vol-gallery-track').forEach(initGalleryTouch);
+    var mainTrack = document.querySelector('.gallery-track');
+    var volTrack = document.querySelector('.vol-gallery-track');
+    if (mainTrack) initGallery(mainTrack, 80);
+    if (volTrack) initGallery(volTrack, 50);
   </script>
 
   <script>
