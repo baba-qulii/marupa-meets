@@ -111,7 +111,7 @@
     .btn-cta:hover { background: transparent; color: var(--bg3); border-color: var(--bg3); }
 
     /* GALLERY STRIP */
-    .gallery-strip { overflow: hidden; background: var(--bg3); padding: 28px 0; border-top: 0.5px solid rgba(255,255,255,0.08); }
+    .gallery-strip { overflow: hidden; background: var(--bg3); padding: 28px 0; border-top: 0.5px solid rgba(255,255,255,0.08); -webkit-mask-image: linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%); mask-image: linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%); }
     .gallery-track { display: flex; gap: 10px; width: max-content; animation: gallery-scroll 80s linear infinite; }
     .gallery-item { height: 200px; width: auto; object-fit: cover; border-radius: 6px; flex-shrink: 0; display: block; }
     .vol-gallery-strip { overflow: hidden; background: var(--cream); padding: 12px 0 48px; -webkit-overflow-scrolling: touch; -webkit-mask-image: linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%); mask-image: linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%); }
