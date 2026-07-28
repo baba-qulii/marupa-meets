@@ -762,57 +762,40 @@
     }, 3500);
   </script>
   <!-- FLOATING BANNER -->
-  <div id="float-panda">
-    <svg viewBox="0 0 120 90" xmlns="http://www.w3.org/2000/svg">
-      <!-- 耳 -->
-      <circle cx="30" cy="20" r="14" fill="#1e4422"/>
-      <circle cx="90" cy="20" r="14" fill="#1e4422"/>
-      <!-- 頭・体 -->
-      <ellipse cx="60" cy="52" rx="38" ry="34" fill="#1e4422"/>
-      <!-- 顔の白い部分 -->
-      <ellipse cx="60" cy="50" rx="26" ry="24" fill="#f0ece4"/>
-      <!-- 目（丸くてかわいい） -->
-      <circle cx="50" cy="44" r="5.5" fill="#1e4422"/>
-      <circle cx="70" cy="44" r="5.5" fill="#1e4422"/>
-      <!-- 目のハイライト -->
-      <circle cx="52" cy="42" r="1.8" fill="#f0ece4"/>
-      <circle cx="72" cy="42" r="1.8" fill="#f0ece4"/>
-      <!-- 鼻 -->
-      <ellipse cx="60" cy="53" rx="3.5" ry="2.5" fill="#1e4422"/>
-      <!-- 口（にっこり） -->
-      <path d="M53 58 Q60 65 67 58" stroke="#1e4422" stroke-width="2.2" fill="none" stroke-linecap="round"/>
-      <!-- 腕（左） -->
-      <ellipse cx="18" cy="80" rx="13" ry="8" transform="rotate(-15 18 80)" fill="#1e4422"/>
-      <!-- 腕（右） -->
-      <ellipse cx="102" cy="80" rx="13" ry="8" transform="rotate(15 102 80)" fill="#1e4422"/>
-    </svg>
-  </div>
-  <a href="https://linktr.ee/sato_company" target="_blank" id="float-banner">
+  <div id="float-container">
+    <img id="float-panda" src="panda-banner.png" alt="">
+    <a href="https://linktr.ee/sato_company" target="_blank" id="float-banner">
     <span class="float-banner-text">SATO COMPANY のあれこれ</span>
     <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
     <button class="float-banner-close" id="float-banner-close" aria-label="閉じる">✕</button>
   </a>
+  </div>
 
   <style>
-    #float-panda {
+    #float-container {
       position: fixed;
-      bottom: 72px;
-      right: 28px;
-      width: 80px;
+      bottom: 24px;
+      right: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
       opacity: 0;
-      transform: translateY(12px);
+      transform: translateY(16px);
       transition: opacity 0.4s ease, transform 0.4s ease;
       pointer-events: none;
-      z-index: 101;
+      z-index: 100;
     }
-    #float-panda.visible {
+    #float-container.visible {
       opacity: 1;
       transform: translateY(0);
+      pointer-events: auto;
+    }
+    #float-panda {
+      width: 110px;
+      margin-bottom: -4px;
+      display: block;
     }
     #float-banner {
-      position: fixed;
-      bottom: 28px;
-      right: 20px;
       background: var(--bg3);
       color: var(--white);
       display: flex;
@@ -824,16 +807,7 @@
       font-size: 13px;
       letter-spacing: 0.05em;
       box-shadow: 0 4px 20px rgba(0,0,0,0.18);
-      opacity: 0;
-      transform: translateY(12px);
-      transition: opacity 0.4s ease, transform 0.4s ease;
-      pointer-events: none;
-      z-index: 100;
-    }
-    #float-banner.visible {
-      opacity: 1;
-      transform: translateY(0);
-      pointer-events: auto;
+      position: relative;
     }
     #float-banner:hover { opacity: 0.85; }
     .float-banner-close {
@@ -859,8 +833,7 @@
 
   <script>
     (function() {
-      var banner = document.getElementById('float-banner');
-      var panda = document.getElementById('float-panda');
+      var container = document.getElementById('float-container');
       var closeBtn = document.getElementById('float-banner-close');
       var dismissed = false;
 
@@ -868,11 +841,9 @@
         if (dismissed) return;
         var scrolled = window.scrollY / (document.body.scrollHeight - window.innerHeight);
         if (scrolled > 0.5) {
-          banner.classList.add('visible');
-          panda.classList.add('visible');
+          container.classList.add('visible');
         } else {
-          banner.classList.remove('visible');
-          panda.classList.remove('visible');
+          container.classList.remove('visible');
         }
       }, { passive: true });
 
@@ -880,8 +851,7 @@
         e.preventDefault();
         e.stopPropagation();
         dismissed = true;
-        banner.classList.remove('visible');
-        panda.classList.remove('visible');
+        container.classList.remove('visible');
       });
     })();
   </script>
