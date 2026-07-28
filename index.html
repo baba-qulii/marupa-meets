@@ -763,7 +763,41 @@
   </script>
   <!-- FLOATING BANNER -->
   <div id="float-container">
-    <img id="float-panda" src="panda-banner.png" alt="">
+    <svg id="float-panda" viewBox="0 0 180 85" xmlns="http://www.w3.org/2000/svg">
+      <!-- しっぽ -->
+      <circle cx="162" cy="52" r="9" fill="#1e4422"/>
+      <!-- 胴体 -->
+      <ellipse cx="108" cy="62" rx="62" ry="26" fill="#1e4422"/>
+      <!-- 後ろ足 -->
+      <ellipse cx="155" cy="74" rx="18" ry="10" fill="#1e4422"/>
+      <!-- 前足（左） -->
+      <ellipse cx="42" cy="72" rx="20" ry="9" transform="rotate(-10 42 72)" fill="#1e4422"/>
+      <!-- 前足（右） -->
+      <ellipse cx="66" cy="76" rx="18" ry="8" fill="#1e4422"/>
+      <!-- 耳 -->
+      <circle cx="22" cy="18" r="12" fill="#1e4422"/>
+      <circle cx="52" cy="10" r="12" fill="#1e4422"/>
+      <!-- 頭 -->
+      <circle cx="38" cy="36" r="30" fill="#1e4422"/>
+      <!-- 顔の白い部分 -->
+      <ellipse cx="38" cy="38" rx="21" ry="20" fill="#f0ece4"/>
+      <!-- 目のまわり（パンダ模様） -->
+      <ellipse cx="28" cy="34" rx="7.5" ry="6" transform="rotate(-20 28 34)" fill="#1e4422"/>
+      <ellipse cx="48" cy="34" rx="7.5" ry="6" transform="rotate(20 48 34)" fill="#1e4422"/>
+      <!-- 目（白ハイライト） -->
+      <circle cx="27" cy="33" r="2.5" fill="#f0ece4"/>
+      <circle cx="47" cy="33" r="2.5" fill="#f0ece4"/>
+      <!-- 瞳 -->
+      <circle cx="27" cy="33" r="1.2" fill="#1e4422"/>
+      <circle cx="47" cy="33" r="1.2" fill="#1e4422"/>
+      <!-- 鼻 -->
+      <ellipse cx="38" cy="43" rx="3" ry="2.2" fill="#1e4422"/>
+      <!-- 口 -->
+      <path d="M33 48 Q38 53 43 48" stroke="#1e4422" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+      <!-- ほっぺ -->
+      <ellipse cx="20" cy="45" rx="6" ry="4" fill="#e8a0a0" opacity="0.5"/>
+      <ellipse cx="56" cy="45" rx="6" ry="4" fill="#e8a0a0" opacity="0.5"/>
+    </svg>
     <a href="https://linktr.ee/sato_company" target="_blank" id="float-banner">
     <span class="float-banner-text">SATO COMPANY のあれこれ</span>
     <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -791,9 +825,11 @@
       pointer-events: auto;
     }
     #float-panda {
-      width: 110px;
-      margin-bottom: -4px;
+      width: 160px;
+      margin-bottom: -6px;
       display: block;
+      position: relative;
+      z-index: 1;
     }
     #float-banner {
       background: var(--bg3);
