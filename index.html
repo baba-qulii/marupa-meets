@@ -392,22 +392,23 @@
       line-height: 1.85;
     }
 
-    .miru-more-wrap { display: flex; justify-content: center; }
+    .miru-more-wrap { display: flex; justify-content: center; margin-top: 28px; }
     .miru-more {
-      display: inline-flex;
+      display: flex;
+      width: fit-content;
       align-items: center;
-      gap: 8px;
-      margin-top: 28px;
+      gap: 10px;
+      padding: 14px 32px;
+      background: var(--dark3);
+      color: var(--cream);
+      text-decoration: none;
+      border-radius: 40px;
       font-size: 12px;
       letter-spacing: 0.18em;
-      color: var(--moss-light);
-      text-decoration: none;
       font-family: sans-serif;
-      border-bottom: 0.5px solid rgba(74, 122, 78, 0.3);
-      padding-bottom: 3px;
-      transition: color 0.2s, border-color 0.2s;
+      transition: background 0.3s;
     }
-    .miru-more:hover { color: var(--dark); border-color: var(--dark); }
+    .miru-more:hover { background: var(--moss-light); }
 
     /* ── 聴く ── */
     .kiku-section {
@@ -488,43 +489,49 @@
     }
 
     /* ── 読む text lines ── */
-    /* ── 読む book open ── */
+    /* ── 読む book flip RTL ── */
     .book-wrap {
       display: flex;
       justify-content: center;
       margin-bottom: 32px;
     }
-    .book-anim {
-      display: flex;
-      align-items: center;
-      perspective: 60px;
-      gap: 2px;
+    .book-scene {
+      position: relative;
+      width: 44px;
+      height: 32px;
+      perspective: 80px;
     }
-    .book-left, .book-right {
-      width: 14px;
-      height: 22px;
-      border: 1.5px solid currentColor;
-      opacity: 0.45;
-    }
-    .book-left {
+    .book-page-l {
+      position: absolute;
+      left: 2px; top: 2px;
+      width: 18px; height: 28px;
+      border: 1.5px solid var(--dark);
       border-right: none;
-      border-radius: 2px 0 0 2px;
-      transform-origin: right center;
-      animation: bookOpenL 2.8s ease-in-out infinite alternate;
+      opacity: 0.38;
     }
-    .book-right {
+    .book-spine {
+      position: absolute;
+      left: 21px; top: 2px;
+      width: 2px; height: 28px;
+      background: var(--dark);
+      opacity: 0.22;
+    }
+    .book-page-r {
+      position: absolute;
+      left: 23px; top: 2px;
+      width: 18px; height: 28px;
+      border: 1.5px solid var(--dark);
       border-left: none;
-      border-radius: 0 2px 2px 0;
-      transform-origin: left center;
-      animation: bookOpenR 2.8s ease-in-out infinite alternate;
+      opacity: 0.38;
     }
-    @keyframes bookOpenL {
-      0%   { transform: rotateY(35deg); opacity: 0.3; }
-      100% { transform: rotateY(8deg);  opacity: 0.5; }
+    .book-page-l {
+      animation: flipLTR 3.6s ease-in-out infinite;
+      transform-origin: 100% 50%;
     }
-    @keyframes bookOpenR {
-      0%   { transform: rotateY(-35deg); opacity: 0.3; }
-      100% { transform: rotateY(-8deg);  opacity: 0.5; }
+    @keyframes flipLTR {
+      0%, 8%   { transform: rotateY(0deg);   opacity: 0.38; }
+      48%, 58% { transform: rotateY(178deg);  opacity: 0.25; }
+      100%     { transform: rotateY(0deg);   opacity: 0.38; }
     }
 
     .miru-inner .section-headline { margin-bottom: 52px; }
@@ -985,9 +992,10 @@
         </div>
       </div>
       <div class="book-wrap reveal">
-        <div class="book-anim" style="color:var(--dark)">
-          <div class="book-left"></div>
-          <div class="book-right"></div>
+        <div class="book-scene">
+          <div class="book-page-l"></div>
+          <div class="book-spine"></div>
+          <div class="book-page-r"></div>
         </div>
       </div>
       <div class="articles-grid">
