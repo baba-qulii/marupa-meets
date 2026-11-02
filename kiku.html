@@ -1,0 +1,918 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
+  <title>聴く | marupa meets ... | SATO COMPANY</title>
+  <link rel="icon" type="image/png" href="favicon.png">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --cream: #d6cfc0;
+      --dark: #0f1f12;
+      --dark2: #162819;
+      --dark3: #1a2e1d;
+      --moss-light: #4a7a4e;
+      --moss-pale: #a8c8aa;
+      --text: #1a2e1d;
+      --text-sub: #4a5e48;
+    }
+    body { font-family: 'Zen Kaku Gothic New', 'Hiragino Kaku Gothic ProN', sans-serif; background: var(--cream); color: var(--text); overflow-x: hidden; }
+
+    .site-header { position: fixed; top: 0; left: 0; right: 0; z-index: 200; padding: 20px 40px; display: flex; align-items: center; justify-content: space-between; background: rgba(26, 46, 29, 0.92); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 0.5px solid rgba(168, 200, 170, 0.12); }
+    .header-logo { font-size: 13px; letter-spacing: 0.22em; color: rgba(214, 207, 192, 0.88); text-decoration: none; }
+    .header-back { font-size: 11px; letter-spacing: 0.14em; color: rgba(168, 200, 170, 0.6); text-decoration: none; display: flex; align-items: center; gap: 6px; font-family: sans-serif; transition: color 0.2s; }
+    .header-back:hover { color: var(--moss-pale); }
+
+    .page-hero { background: var(--dark); padding: 120px 24px 72px; text-align: center; position: relative; overflow: hidden; }
+    .page-hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 60% 50% at 50% 60%, rgba(74, 122, 78, 0.12) 0%, transparent 70%); pointer-events: none; }
+    .page-hero-eyebrow { font-size: 10px; letter-spacing: 0.32em; color: var(--moss-pale); font-family: sans-serif; margin-bottom: 16px; opacity: 0.7; }
+    .page-hero-title { font-size: clamp(36px, 7vw, 64px); font-weight: 400; color: var(--cream); line-height: 1; margin-bottom: 16px; }
+    .page-hero-sub { font-size: 13px; color: rgba(168, 200, 170, 0.5); letter-spacing: 0.1em; }
+
+    .coming-section { min-height: 60vh; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 80px 24px; text-align: center; }
+    .coming-label { font-size: 10px; letter-spacing: 0.32em; color: var(--moss-light); font-family: sans-serif; margin-bottom: 24px; opacity: 0.7; }
+    .coming-title { font-size: clamp(24px, 4vw, 36px); color: var(--text); margin-bottom: 20px; font-weight: 400; }
+    .coming-desc { font-size: 13px; color: var(--text-sub); line-height: 2; max-width: 400px; }
+    .coming-dot-row { display: flex; gap: 10px; justify-content: center; margin-top: 40px; }
+    .coming-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--moss-light); opacity: 0.25; animation: dot-pulse 2.4s ease-in-out infinite; }
+    .coming-dot:nth-child(2) { animation-delay: 0.4s; }
+    .coming-dot:nth-child(3) { animation-delay: 0.8s; }
+    @keyframes dot-pulse { 0%, 100% { opacity: 0.2; transform: scale(1); } 50% { opacity: 0.7; transform: scale(1.4); } }
+
+    .back-link-wrap { padding: 0 24px 80px; text-align: center; }
+    .back-link { font-size: 11px; letter-spacing: 0.18em; color: var(--moss-light); text-decoration: none; font-family: sans-serif; display: inline-flex; align-items: center; gap: 6px; transition: color 0.2s; }
+    .back-link:hover { color: var(--text); }
+
+    .links-section { background: var(--dark); padding: 64px 24px; text-align: center; border-top: 0.5px solid rgba(255,255,255,0.12); }
+    .links-label { font-size: 11px; letter-spacing: 0.2em; color: var(--moss-pale); text-transform: uppercase; margin-bottom: 32px; }
+    .links-grid { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; max-width: 600px; margin: 0 auto; }
+    .link-card { display: flex; flex-direction: column; align-items: center; gap: 8px; padding: 24px 28px; background: rgba(255,255,255,0.05); border: 0.5px solid rgba(255,255,255,0.12); border-radius: 12px; text-decoration: none; color: #ffffff; transition: background 0.2s; min-width: 140px; }
+    .link-card:hover { background: rgba(255,255,255,0.1); }
+    .link-icon { color: var(--moss-pale); }
+    .link-name { font-size: 13px; letter-spacing: 0.1em; }
+    .link-url { font-size: 11px; color: rgba(168,200,170,0.5); letter-spacing: 0.05em; font-family: sans-serif; }
+    .episodes-section { background: var(--cream); padding: 64px 24px; }
+    .episodes-inner { max-width: 720px; margin: 0 auto; }
+    .episodes-label { font-size: 10px; letter-spacing: 0.32em; color: var(--moss-light); margin-bottom: 8px; opacity: 0.7; font-family: sans-serif; }
+    .episodes-title { font-size: clamp(18px, 3vw, 24px); color: var(--text); margin-bottom: 40px; font-weight: 400; }
+    .episode-list { display: flex; flex-direction: column; gap: 1px; border-top: 0.5px solid rgba(26,46,29,0.12); }
+    .episode-item { display: flex; align-items: center; gap: 20px; padding: 20px 0; border-bottom: 0.5px solid rgba(26,46,29,0.12); text-decoration: none; color: var(--text); transition: background 0.2s; }
+    .episode-item:hover { background: rgba(74,122,78,0.04); }
+    .episode-num { font-size: 10px; letter-spacing: 0.1em; color: var(--moss-light); font-family: sans-serif; min-width: 36px; opacity: 0.7; }
+    .episode-body { flex: 1; }
+    .episode-ep-title { font-size: 14px; line-height: 1.6; color: var(--text); margin-bottom: 4px; }
+    .episode-meta { font-size: 11px; color: var(--text-sub); font-family: sans-serif; display: flex; gap: 16px; }
+    .episode-play { color: var(--moss-light); flex-shrink: 0; }
+    .episodes-more { display: flex; justify-content: center; margin-top: 40px; }
+    .episodes-more-btn { display: inline-flex; align-items: center; gap: 8px; font-size: 11px; letter-spacing: 0.18em; color: var(--moss-light); text-decoration: none; font-family: sans-serif; border-bottom: 0.5px solid rgba(74,122,78,0.3); padding-bottom: 3px; transition: color 0.2s; }
+    .episodes-more-btn:hover { color: var(--text); }
+    .ep-tab-bar { display: flex; gap: 0; margin-bottom: 0; border-bottom: 1px solid rgba(26,46,29,0.12); }
+    .ep-tab-btn { background: none; border: none; border-bottom: 2px solid transparent; padding: 10px 20px; font-size: 11px; letter-spacing: 0.1em; color: var(--text-sub); cursor: pointer; font-family: sans-serif; margin-bottom: -1px; transition: color 0.2s, border-color 0.2s; }
+    .ep-tab-btn.active { color: var(--moss-light); border-bottom-color: var(--moss-light); }
+    .ep-tab-panel { display: none; }
+    .ep-tab-panel.active { display: block; }
+    .ep-tab-bar-bottom { margin-top: 8px; border-top: 1px solid rgba(26,46,29,0.12); border-bottom: none; }
+    footer { background: var(--dark); padding: 48px 40px; text-align: center; border-top: 0.5px solid rgba(168, 200, 170, 0.1); }
+    .footer-logo { font-size: 12px; letter-spacing: 0.28em; color: rgba(168, 200, 170, 0.28); margin-bottom: 10px; }
+    .footer-copy { font-size: 10px; letter-spacing: 0.1em; color: rgba(168, 200, 170, 0.15); font-family: sans-serif; }
+
+    @media (max-width: 600px) { .site-header { padding: 16px 20px; } }
+
+    .falling-leaf { position: fixed; top: -80px; pointer-events: none; z-index: 0; }
+    @keyframes leaf-fall {
+      0%   { transform: translateY(0) translateX(0) rotate(var(--r0)); opacity: 0; }
+      5%   { opacity: var(--op); }
+      40%  { transform: translateY(40vh) translateX(var(--sx)) rotate(calc(var(--r0) + 80deg)); }
+      70%  { transform: translateY(75vh) translateX(calc(var(--sx) * -0.4)) rotate(calc(var(--r0) + 160deg)); }
+      95%  { opacity: var(--op); }
+      100% { transform: translateY(110vh) translateX(calc(var(--sx) * 0.6)) rotate(calc(var(--r0) + 260deg)); opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="site-header">
+    <a href="marupa-meets.html" class="header-logo">marupa meets ...</a>
+    <a href="marupa-meets.html" class="header-back">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+      トップへ戻る
+    </a>
+  </header>
+
+  <div class="page-hero">
+    <h1 class="page-hero-title">聴く</h1>
+    <p class="page-hero-sub">声を聞くと、その人のことが少し身近に感じられる。</p>
+  </div>
+
+<section class="episodes-section">
+    <div class="episodes-inner">
+      <p class="episodes-label">PODCAST</p>
+      <h2 class="episodes-title">末っ子社長の愚痴と愛〜飾れないラジオ〜</h2>
+      <div class="ep-tabs">
+        <div class="ep-tab-bar">
+        <button class="ep-tab-btn active" data-tab="0">#70〜#99</button>
+        <button class="ep-tab-btn " data-tab="1">#40〜#69</button>
+        <button class="ep-tab-btn " data-tab="2">#10〜#39</button>
+        <button class="ep-tab-btn " data-tab="3">#01〜#09</button>
+        </div>
+      <div class="ep-tab-panel active" data-panel="0">
+        <div class="episode-list">
+        <a href="https://open.spotify.com/show/6Hz9B1Zo7CJcPMm7tHPUVy" target="_blank" class="episode-item">
+          <span class="episode-num">#99</span>
+          <div class="episode-body">
+            <p class="episode-ep-title">100回直前企画！舘野さんに100問100答してみた。</p>
+          </div>
+          <div class="episode-play"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+        </a>
+        <a href="https://open.spotify.com/show/6Hz9B1Zo7CJcPMm7tHPUVy" target="_blank" class="episode-item">
+          <span class="episode-num">#98</span>
+          <div class="episode-body">
+            <p class="episode-ep-title">お盆明けのよもやま話。義務感お土産と、ギターと娘と。</p>
+          </div>
+          <div class="episode-play"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+        </a>
+        <a href="https://open.spotify.com/show/6Hz9B1Zo7CJcPMm7tHPUVy" target="_blank" class="episode-item">
+          <span class="episode-num">#97</span>
+          <div class="episode-body">
+            <p class="episode-ep-title">舘野家のヨーロッパ旅〈後編〉——パリの地下鉄に挟まれ、ゴッホが動き出した日。</p>
+          </div>
+          <div class="episode-play"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+        </a>
+        <a href="https://open.spotify.com/show/6Hz9B1Zo7CJcPMm7tHPUVy" target="_blank" class="episode-item">
+          <span class="episode-num">#96</span>
+          <div class="episode-body">
+            <p class="episode-ep-title">舘野家のヨーロッパ旅〈前編〉——デュッセルドルフ、ゆかりの地へ。</p>
+          </div>
+          <div class="episode-play"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+        </a>
+        <a href="https://open.spotify.com/show/6Hz9B1Zo7CJcPMm7tHPUVy" target="_blank" class="episode-item">
+          <span class="episode-num">#95</span>
+          <div class="episode-body">
+            <p class="episode-ep-title">「なんで私は場を作りたいんだろう」——私が数年のうちに実現したいこと</p>
+          </div>
+          <div class="episode-play"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+        </a>
+        <a href="https://open.spotify.com/show/6Hz9B1Zo7CJcPMm7tHPUVy" target="_blank" class="episode-item">
+          <span class="episode-num">#94</span>
+          <div class="episode-body">
+            <p class="episode-ep-title">質問・発問・問い——その違い、言えますか。「問いをTOYにする」話。</p>
+          </div>
+          <div class="episode-play"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+        </a>
+        <a href="https://open.spotify.com/show/6Hz9B1Zo7CJcPMm7tHPUVy" target="_blank" class="episode-item">
+          <span class="episode-num">#93</span>
+          <div class="episode-body">
+            <p class="episode-ep-title">会議？ミーティング？打ち合わせ？——その違いって！？</p>
+          </div>
+          <div class="episode-play"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+        </a>
+        <a href="https://open.spotify.com/show/6Hz9B1Zo7CJcPMm7tHPUVy" target="_blank" class="episode-item">
+          <span class="episode-num">#92</span>
+          <div class="episode-body">
+            <p class="episode-ep-title">あなたはどこで、どう聴いてる？ポッドキャストの味わい方</p>
+          </div>
+          <div class="episode-play"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+        </a>
+        <a href="https://open.spotify.com/show/6Hz9B1Zo7CJcPMm7tHPUVy" target="_blank" class="episode-item">
+          <span class="episode-num">#91</span>
+          <div class="episode-body">
+            <p class="episode-ep-title">100回までの妄想会議。落語、木の音、そして宿題。</p>
+          </div>
+          <div class="episode-play"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+        </a>
+        <a href="https://open.spotify.com/show/6Hz9B1Zo7CJcPMm7tHPUVy" target="_blank" class="episode-item">
+          <span class="episode-num">#90</span>
+          <div class="episode-body">
+            <p class="episode-ep-title">映像でこそ伝わる、「これ」の力。ビデオポッドキャスト、はじまります！</p>
+          </div>
+          <div class="episode-play"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+        </a>
+        <a href="https://open.spotify.com/show/6Hz9B1Zo7CJcPMm7tHPUVy" target="_blank" class="episode-item">
+          <span class="episode-num">#89</span>
+          <div class="episode-body">
+            <p class="episode-ep-title">歩き方、変えてみた。足指チューブと、くだらなくない話</p>
+          </div>
+          <div class="episode-play"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+        </a>
+        <a href="https://open.spotify.com/show/6Hz9B1Zo7CJcPMm7tHPUVy" target="_blank" class="episode-item">
+          <span class="episode-num">#88</span>
+          <div class="episode-body">
+            <p class="episode-ep-title">「あなたの気になるは何ですか？」 高校生に投げかけた、未来の種の話。</p>
+          </div>
+          <div class="episode-play"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+        </a>
+        <a href="https://open.spotify.com/show/6Hz9B1Zo7CJcPMm7tHPUVy" target="_blank" class="episode-item">
+          <span class="episode-num">#87</span>
+          <div class="episode-body">
+            <p class="episode-ep-title">「知らない場所に、自分を見つけにいく。」— 大学生・高校生が語る、飛び込む勇気と変わっていく感覚 —</p>
+          </div>
+          <div class="episode-play"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+        </a>
+        <a href="https://open.spotify.com/show/6Hz9B1Zo7CJcPMm7tHPUVy" target="_blank" class="episode-item">
+          <span class="episode-num">#86</span>
+          <div class="episode-body">
+            <p class="episode-ep-title">計画しない経営！？</p>
+          </div>
+          <div class="episode-play"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+        </a>
+        <a href="https://open.spotify.com/show/6Hz9B1Zo7CJcPMm7tHPUVy" target="_blank" class="episode-item">
+          <span class="episode-num">#85</span>
+          <div class="episode-body">
+            <p class="episode-ep-title">びょういんの2階で、人生をデザインする。〜ソーシャルファームがひらく新しい病院のかたち〜</p>
+          </div>
+          <div class="episode-play"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+        </a>
+        <a href="https://open.spotify.com/show/6Hz9B1Zo7CJcPMm7tHPUVy" target="_blank" class="episode-item">
+          <span class="episode-num">#84</span>
+          <div class="episode-body">
+            <p class="episode-ep-title">どーでもいいにたどり着くまで 〜短歌を3人で味わってみた夜〜</p>
+          </div>
+          <div class="episode-play"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+        </a>
+        <a href="https://open.spotify.com/show/6Hz9B1Zo7CJcPMm7tHPUVy" target="_blank" class="episode-item">
+          <span class="episode-num">#83</span>
+          <div class="episode-body">
+            <p class="episode-ep-title">公園の木で、人気があるのは○○の木！？—登る・舐める・人間の本能の話</p>
+          </div>
+          <div class="episode-play"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+        </a>
+        <a href="https://open.spotify.com/show/6Hz9B1Zo7CJcPMm7tHPUVy" target="_blank" class="episode-item">
+          <span class="episode-num">#82</span>
+          <div class="episode-body">
+            <p class="episode-ep-title">「テーマがない場に、学びが生まれる。」― 教育は学校の外へ、出会いは偶然から ―</p>
+          </div>
+          <div class="episode-play"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+        </a>
+        <a href="https://open.spotify.com/show/6Hz9B1Zo7CJcPMm7tHPUVy" target="_blank" class="episode-item">
+          <span class="episode-num">#81</span>
+          <div class="episode-body">
+            <p class="episode-ep-title">「場をひらくと、人が動き出す」― 秘密基地で見えた、出会いと仕事のつながり方 ―</p>
+          </div>
+          <div class="episode-play"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+        </a>
+        <a href="https://open.spotify.com/show/6Hz9B1Zo7CJcPMm7tHPUVy" target="_blank" class="episode-item">
+          <span class="episode-num">#80</span>
+          <div class="episode-body">
+            <p class="episode-ep-title">エシカルって、心地よさの話だった。インテリアから考える選択の基準</p>
+          </div>
+          <div class="episode-play"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+        </a>
+        <a href="https://open.spotify.com/show/6Hz9B1Zo7CJcPMm7tHPUVy" target="_blank" class="episode-item">
+          <span class="episode-num">#79</span>
+          <div class="episode-body">
+            <p class="episode-ep-title">自己紹介が苦手な人たちの、ちょっといい出会い方</p>
+          </div>
+          <div class="episode-play"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+        </a>
+        <a href="https://open.spotify.com/show/6Hz9B1Zo7CJcPMm7tHPUVy" target="_blank" class="episode-item">
+          <span class="episode-num">#78</span>
+          <div class="episode-body">
+            <p class="episode-ep-title">「とりあえず力」ありますか？フィーリングとゴールのあいだ</p>
+          </div>
+          <div class="episode-play"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+        </a>
+        <a href="https://open.spotify.com/show/6Hz9B1Zo7CJcPMm7tHPUVy" target="_blank" class="episode-item">
+          <span class="episode-num">#77</span>
+          <div class="episode-body">
+            <p class="episode-ep-title">作文用紙から始まった！自己認識が人を変える瞬間</p>
+          </div>
+          <div class="episode-play"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+        </a>
+        <a href="https://open.spotify.com/show/6Hz9B1Zo7CJcPMm7tHPUVy" target="_blank" class="episode-item">
+          <span class="episode-num">#76</span>
+          <div class="episode-body">
+            <p class="episode-ep-title">ソーシャルか、インサイトか。二代目社長の自己分析！</p>
+          </div>
+          <div class="episode-play"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+        </a>
+        <a href="https://open.spotify.com/show/6Hz9B1Zo7CJcPMm7tHPUVy" target="_blank" class="episode-item">
+          <span class="episode-num">#75</span>
+          <div class="episode-body">
+            <p class="episode-ep-title">高校生がいると、仕事ははかどる？本社で偶然、大発見！？</p>
+          </div>
+          <div class="episode-play"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+        </a>
+        <a href="https://open.spotify.com/show/6Hz9B1Zo7CJcPMm7tHPUVy" target="_blank" class="episode-item">
+          <span class="episode-num">#74</span>
+          <div class="episode-body">
+            <p class="episode-ep-title">お風呂に潜る社長と、一駅分の思考時間</p>
+          </div>
+          <div class="episode-play"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+        </a>
+        <a href="https://open.spotify.com/show/6Hz9B1Zo7CJcPMm7tHPUVy" target="_blank" class="episode-item">
+          <span class="episode-num">#73</span>
+          <div class="episode-body">
+            <p class="episode-ep-title">夜10時からの自分メンテナンス。太陽とキャンドルと私たち</p>
+          </div>
+          <div class="episode-play"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+        </a>
+        <a href="https://open.spotify.com/show/6Hz9B1Zo7CJcPMm7tHPUVy" target="_blank" class="episode-item">
+          <span class="episode-num">#72</span>
+          <div class="episode-body">
+            <p class="episode-ep-title">「80円の落とし穴。カード停止と、私の暮らしリセット宣言」</p>
+          </div>
+          <div class="episode-play"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+        </a>
+        <a href="https://open.spotify.com/show/6Hz9B1Zo7CJcPMm7tHPUVy" target="_blank" class="episode-item">
+          <span class="episode-num">#71</span>
+          <div class="episode-body">
+            <p class="episode-ep-title">あけましておめでとう！今年の漢字を発表します！</p>
+          </div>
+          <div class="episode-play"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+        </a>
+        <a href="https://open.spotify.com/show/6Hz9B1Zo7CJcPMm7tHPUVy" target="_blank" class="episode-item">
+          <span class="episode-num">#70</span>
+          <div class="episode-body">
+            <p class="episode-ep-title">とにかく今年を生き抜いた！良いお年を！</p>
+          </div>
+          <div class="episode-play"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+        </a>
+        </div>
+      </div>
+      <div class="ep-tab-panel " data-panel="1">
+        <div class="episode-list">
+        <a href="https://open.spotify.com/show/6Hz9B1Zo7CJcPMm7tHPUVy" target="_blank" class="episode-item">
+          <span class="episode-num">#69</span>
+          <div class="episode-body">
+            <p class="episode-ep-title">メリークリスマス！病院の2階と、サンタのその後</p>
+          </div>
+          <div class="episode-play"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+        </a>
+        <a href="https://open.spotify.com/show/6Hz9B1Zo7CJcPMm7tHPUVy" target="_blank" class="episode-item">
+          <span class="episode-num">#68</span>
+          <div class="episode-body">
+            <p class="episode-ep-title">人に甘えるって難しい。炭酸パックとボケに救われる朝</p>
+          </div>
+          <div class="episode-play"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+        </a>
+        <a href="https://open.spotify.com/show/6Hz9B1Zo7CJcPMm7tHPUVy" target="_blank" class="episode-item">
+          <span class="episode-num">#67</span>
+          <div class="episode-body">
+            <p class="episode-ep-title">ミニキャベツと虫と掃除の話 ─ オンライン収録でこぼれ落ちた日常</p>
+          </div>
+          <div class="episode-play"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+        </a>
+        <a href="https://open.spotify.com/show/6Hz9B1Zo7CJcPMm7tHPUVy" target="_blank" class="episode-item">
+          <span class="episode-num">#66</span>
+          <div class="episode-body">
+            <p class="episode-ep-title">担任と経営者は似ている？ ― 学級経営×企業経営の意外な共通点</p>
+          </div>
+          <div class="episode-play"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+        </a>
+        <a href="https://open.spotify.com/show/6Hz9B1Zo7CJcPMm7tHPUVy" target="_blank" class="episode-item">
+          <span class="episode-num">#65</span>
+          <div class="episode-body">
+            <p class="episode-ep-title">まりこチャンネル爆誕!? ― 中野クリエイティブラボで広がる即興トークの夜</p>
+          </div>
+          <div class="episode-play"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+        </a>
+        <a href="https://open.spotify.com/show/6Hz9B1Zo7CJcPMm7tHPUVy" target="_blank" class="episode-item">
+          <span class="episode-num">#64</span>
+          <div class="episode-body">
+            <p class="episode-ep-title">つながる木と、憩う森──熊野へと続くキッズデザイン賞</p>
+          </div>
+          <div class="episode-play"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+        </a>
+        <a href="https://open.spotify.com/show/6Hz9B1Zo7CJcPMm7tHPUVy" target="_blank" class="episode-item">
+          <span class="episode-num">#63</span>
+          <div class="episode-body">
+            <p class="episode-ep-title">未完成の美学──余白が生む対話の場所</p>
+          </div>
+          <div class="episode-play"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+        </a>
+        <a href="https://open.spotify.com/show/6Hz9B1Zo7CJcPMm7tHPUVy" target="_blank" class="episode-item">
+          <span class="episode-num">#62</span>
+          <div class="episode-body">
+            <p class="episode-ep-title">公開収録スペシャル対談！『つくるをほぐす』（後編）</p>
+          </div>
+          <div class="episode-play"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+        </a>
+        <a href="https://open.spotify.com/show/6Hz9B1Zo7CJcPMm7tHPUVy" target="_blank" class="episode-item">
+          <span class="episode-num">#61</span>
+          <div class="episode-body">
+            <p class="episode-ep-title">公開収録スペシャル対談！『つくるをほぐす』（前編）</p>
+          </div>
+          <div class="episode-play"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+        </a>
+        <a href="https://open.spotify.com/show/6Hz9B1Zo7CJcPMm7tHPUVy" target="_blank" class="episode-item">
+          <span class="episode-num">#60</span>
+          <div class="episode-body">
+            <p class="episode-ep-title">卓球で面談!? ピンポンがつなぐ職場の会話</p>
+          </div>
+          <div class="episode-play"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+        </a>
+        <a href="https://open.spotify.com/show/6Hz9B1Zo7CJcPMm7tHPUVy" target="_blank" class="episode-item">
+          <span class="episode-num">#59</span>
+          <div class="episode-body">
+            <p class="episode-ep-title">しんどい時のメンタルケア ― 体と心を整える方法</p>
+          </div>
+          <div class="episode-play"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+        </a>
+        <a href="https://open.spotify.com/show/6Hz9B1Zo7CJcPMm7tHPUVy" target="_blank" class="episode-item">
+          <span class="episode-num">#58</span>
+          <div class="episode-body">
+            <p class="episode-ep-title">ナカノバブックフェスをふりかえる― 偶然の出会いを楽しむ</p>
+          </div>
+          <div class="episode-play"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+        </a>
+        <a href="https://open.spotify.com/show/6Hz9B1Zo7CJcPMm7tHPUVy" target="_blank" class="episode-item">
+          <span class="episode-num">#57</span>
+          <div class="episode-body">
+            <p class="episode-ep-title">ナカノバブックフェスをふりかえる ― パレット屋台と工場キャンプの妄想</p>
+          </div>
+          <div class="episode-play"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+        </a>
+        <a href="https://open.spotify.com/show/6Hz9B1Zo7CJcPMm7tHPUVy" target="_blank" class="episode-item">
+          <span class="episode-num">#56</span>
+          <div class="episode-body">
+            <p class="episode-ep-title">木と人がつくる場のちから〈後編〉</p>
+          </div>
+          <div class="episode-play"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+        </a>
+        <a href="https://open.spotify.com/show/6Hz9B1Zo7CJcPMm7tHPUVy" target="_blank" class="episode-item">
+          <span class="episode-num">#55</span>
+          <div class="episode-body">
+            <p class="episode-ep-title">木と人がつくる場のちから〈前編〉</p>
+          </div>
+          <div class="episode-play"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+        </a>
+        <a href="https://open.spotify.com/show/6Hz9B1Zo7CJcPMm7tHPUVy" target="_blank" class="episode-item">
+          <span class="episode-num">#54</span>
+          <div class="episode-body">
+            <p class="episode-ep-title">夏、動きたくなる理由</p>
+          </div>
+          <div class="episode-play"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+        </a>
+        <a href="https://open.spotify.com/show/6Hz9B1Zo7CJcPMm7tHPUVy" target="_blank" class="episode-item">
+          <span class="episode-num">#53</span>
+          <div class="episode-body">
+            <p class="episode-ep-title">評価ってなんだ？社長と教育者のリアルトーク</p>
+          </div>
+          <div class="episode-play"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+        </a>
+        <a href="https://open.spotify.com/show/6Hz9B1Zo7CJcPMm7tHPUVy" target="_blank" class="episode-item">
+          <span class="episode-num">#52</span>
+          <div class="episode-body">
+            <p class="episode-ep-title">産業カウンセラーと人生の分岐点 ― コミュニケーションの難しさと面白さ</p>
+          </div>
+          <div class="episode-play"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+        </a>
+        <a href="https://open.spotify.com/show/6Hz9B1Zo7CJcPMm7tHPUVy" target="_blank" class="episode-item">
+          <span class="episode-num">#51</span>
+          <div class="episode-body">
+            <p class="episode-ep-title">姿勢とコミュニケーション、そしてAIへの愚痴</p>
+          </div>
+          <div class="episode-play"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+        </a>
+        <a href="https://open.spotify.com/show/6Hz9B1Zo7CJcPMm7tHPUVy" target="_blank" class="episode-item">
+          <span class="episode-num">#50</span>
+          <div class="episode-body">
+            <p class="episode-ep-title">冊子に込めた、ありがとうと挑戦のものがたり</p>
+          </div>
+          <div class="episode-play"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+        </a>
+        <a href="https://open.spotify.com/show/6Hz9B1Zo7CJcPMm7tHPUVy" target="_blank" class="episode-item">
+          <span class="episode-num">#49</span>
+          <div class="episode-body">
+            <p class="episode-ep-title">スマホを置く、バスに乗る。とりとめのないわたしたちのデジタル模様</p>
+          </div>
+          <div class="episode-play"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+        </a>
+        <a href="https://open.spotify.com/show/6Hz9B1Zo7CJcPMm7tHPUVy" target="_blank" class="episode-item">
+          <span class="episode-num">#48</span>
+          <div class="episode-body">
+            <p class="episode-ep-title">振り返りはベッドサイドから。万博の灼熱とキャッシュレスのリアル</p>
+          </div>
+          <div class="episode-play"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+        </a>
+        <a href="https://open.spotify.com/show/6Hz9B1Zo7CJcPMm7tHPUVy" target="_blank" class="episode-item">
+          <span class="episode-num">#47</span>
+          <div class="episode-body">
+            <p class="episode-ep-title">「メガネ忘れた日」に考えた、振り返りの力とそのかたち</p>
+          </div>
+          <div class="episode-play"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+        </a>
+        <a href="https://open.spotify.com/show/6Hz9B1Zo7CJcPMm7tHPUVy" target="_blank" class="episode-item">
+          <span class="episode-num">#46</span>
+          <div class="episode-body">
+            <p class="episode-ep-title">わたしたちは、Earthing（アーシング）している！？</p>
+          </div>
+          <div class="episode-play"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+        </a>
+        <a href="https://open.spotify.com/show/6Hz9B1Zo7CJcPMm7tHPUVy" target="_blank" class="episode-item">
+          <span class="episode-num">#45</span>
+          <div class="episode-body">
+            <p class="episode-ep-title">ジェンダーレスな表現って？</p>
+          </div>
+          <div class="episode-play"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+        </a>
+        <a href="https://open.spotify.com/show/6Hz9B1Zo7CJcPMm7tHPUVy" target="_blank" class="episode-item">
+          <span class="episode-num">#44</span>
+          <div class="episode-body">
+            <p class="episode-ep-title">ワークショップ運営って難しい！</p>
+          </div>
+          <div class="episode-play"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+        </a>
+        <a href="https://open.spotify.com/show/6Hz9B1Zo7CJcPMm7tHPUVy" target="_blank" class="episode-item">
+          <span class="episode-num">#43</span>
+          <div class="episode-body">
+            <p class="episode-ep-title">あの有名企業とコラボ！！後編</p>
+          </div>
+          <div class="episode-play"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+        </a>
+        <a href="https://open.spotify.com/show/6Hz9B1Zo7CJcPMm7tHPUVy" target="_blank" class="episode-item">
+          <span class="episode-num">#42</span>
+          <div class="episode-body">
+            <p class="episode-ep-title">あの有名企業とコラボ！！前編</p>
+          </div>
+          <div class="episode-play"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+        </a>
+        <a href="https://open.spotify.com/show/6Hz9B1Zo7CJcPMm7tHPUVy" target="_blank" class="episode-item">
+          <span class="episode-num">#41</span>
+          <div class="episode-body">
+            <p class="episode-ep-title">\香り\が旬なんです！</p>
+          </div>
+          <div class="episode-play"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+        </a>
+        <a href="https://open.spotify.com/show/6Hz9B1Zo7CJcPMm7tHPUVy" target="_blank" class="episode-item">
+          <span class="episode-num">#40</span>
+          <div class="episode-body">
+            <p class="episode-ep-title">JAPAN SHOP、それから。</p>
+          </div>
+          <div class="episode-play"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+        </a>
+        </div>
+      </div>
+      <div class="ep-tab-panel " data-panel="2">
+        <div class="episode-list">
+        <a href="https://open.spotify.com/show/6Hz9B1Zo7CJcPMm7tHPUVy" target="_blank" class="episode-item">
+          <span class="episode-num">#39</span>
+          <div class="episode-body">
+            <p class="episode-ep-title">春です！犬です！</p>
+          </div>
+          <div class="episode-play"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+        </a>
+        <a href="https://open.spotify.com/show/6Hz9B1Zo7CJcPMm7tHPUVy" target="_blank" class="episode-item">
+          <span class="episode-num">#38</span>
+          <div class="episode-body">
+            <p class="episode-ep-title">時間・お金の価値とか、友達とか。</p>
+          </div>
+          <div class="episode-play"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+        </a>
+        <a href="https://open.spotify.com/show/6Hz9B1Zo7CJcPMm7tHPUVy" target="_blank" class="episode-item">
+          <span class="episode-num">#37</span>
+          <div class="episode-body">
+            <p class="episode-ep-title">「忙しい」について、ニワトリが語る</p>
+          </div>
+          <div class="episode-play"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+        </a>
+        <a href="https://open.spotify.com/show/6Hz9B1Zo7CJcPMm7tHPUVy" target="_blank" class="episode-item">
+          <span class="episode-num">#36</span>
+          <div class="episode-body">
+            <p class="episode-ep-title">\香り\の話と、バリコさん。</p>
+          </div>
+          <div class="episode-play"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+        </a>
+        <a href="https://open.spotify.com/show/6Hz9B1Zo7CJcPMm7tHPUVy" target="_blank" class="episode-item">
+          <span class="episode-num">#35</span>
+          <div class="episode-body">
+            <p class="episode-ep-title">豊かさとか、無駄とか、余白とか。</p>
+          </div>
+          <div class="episode-play"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+        </a>
+        <a href="https://open.spotify.com/show/6Hz9B1Zo7CJcPMm7tHPUVy" target="_blank" class="episode-item">
+          <span class="episode-num">#34</span>
+          <div class="episode-body">
+            <p class="episode-ep-title">わすれもの</p>
+          </div>
+          <div class="episode-play"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+        </a>
+        <a href="https://open.spotify.com/show/6Hz9B1Zo7CJcPMm7tHPUVy" target="_blank" class="episode-item">
+          <span class="episode-num">#33</span>
+          <div class="episode-body">
+            <p class="episode-ep-title">目的先行？手段先行？悩める仕事の進め方</p>
+          </div>
+          <div class="episode-play"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+        </a>
+        <a href="https://open.spotify.com/show/6Hz9B1Zo7CJcPMm7tHPUVy" target="_blank" class="episode-item">
+          <span class="episode-num">#32</span>
+          <div class="episode-body">
+            <p class="episode-ep-title">社内規則を変えるって、大変！？</p>
+          </div>
+          <div class="episode-play"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+        </a>
+        <a href="https://open.spotify.com/show/6Hz9B1Zo7CJcPMm7tHPUVy" target="_blank" class="episode-item">
+          <span class="episode-num">#31</span>
+          <div class="episode-body">
+            <p class="episode-ep-title">本当に\飾っていない\！？仕事とプライベートの切り替え術（後編）</p>
+          </div>
+          <div class="episode-play"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+        </a>
+        <a href="https://open.spotify.com/show/6Hz9B1Zo7CJcPMm7tHPUVy" target="_blank" class="episode-item">
+          <span class="episode-num">#30</span>
+          <div class="episode-body">
+            <p class="episode-ep-title">本当に\飾っていない\！？仕事とプライベートの切り替え術（前編）</p>
+          </div>
+          <div class="episode-play"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+        </a>
+        <a href="https://open.spotify.com/show/6Hz9B1Zo7CJcPMm7tHPUVy" target="_blank" class="episode-item">
+          <span class="episode-num">#29</span>
+          <div class="episode-body">
+            <p class="episode-ep-title">痛かった年末年始！？愛と生命の2025！</p>
+          </div>
+          <div class="episode-play"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+        </a>
+        <a href="https://open.spotify.com/show/6Hz9B1Zo7CJcPMm7tHPUVy" target="_blank" class="episode-item">
+          <span class="episode-num">#28</span>
+          <div class="episode-body">
+            <p class="episode-ep-title">パレットの、声を聴く。</p>
+          </div>
+          <div class="episode-play"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+        </a>
+        <a href="https://open.spotify.com/show/6Hz9B1Zo7CJcPMm7tHPUVy" target="_blank" class="episode-item">
+          <span class="episode-num">#27</span>
+          <div class="episode-body">
+            <p class="episode-ep-title">森、山、人の、声を聴く。</p>
+          </div>
+          <div class="episode-play"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+        </a>
+        <a href="https://open.spotify.com/show/6Hz9B1Zo7CJcPMm7tHPUVy" target="_blank" class="episode-item">
+          <span class="episode-num">#26</span>
+          <div class="episode-body">
+            <p class="episode-ep-title">謹賀新年！巳年です！お姫様なヘビ話！</p>
+          </div>
+          <div class="episode-play"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+        </a>
+        <a href="https://open.spotify.com/show/6Hz9B1Zo7CJcPMm7tHPUVy" target="_blank" class="episode-item">
+          <span class="episode-num">#25</span>
+          <div class="episode-body">
+            <p class="episode-ep-title">メリークリスマス！！今年もありがとう！</p>
+          </div>
+          <div class="episode-play"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+        </a>
+        <a href="https://open.spotify.com/show/6Hz9B1Zo7CJcPMm7tHPUVy" target="_blank" class="episode-item">
+          <span class="episode-num">#24</span>
+          <div class="episode-body">
+            <p class="episode-ep-title">即興する大切さと熟成する尊さ</p>
+          </div>
+          <div class="episode-play"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+        </a>
+        <a href="https://open.spotify.com/show/6Hz9B1Zo7CJcPMm7tHPUVy" target="_blank" class="episode-item">
+          <span class="episode-num">#23</span>
+          <div class="episode-body">
+            <p class="episode-ep-title">観劇、感激！自由の枠と制約！？</p>
+          </div>
+          <div class="episode-play"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+        </a>
+        <a href="https://open.spotify.com/show/6Hz9B1Zo7CJcPMm7tHPUVy" target="_blank" class="episode-item">
+          <span class="episode-num">#22</span>
+          <div class="episode-body">
+            <p class="episode-ep-title">名刺の裏面、イラストの秘密！</p>
+          </div>
+          <div class="episode-play"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+        </a>
+        <a href="https://open.spotify.com/show/6Hz9B1Zo7CJcPMm7tHPUVy" target="_blank" class="episode-item">
+          <span class="episode-num">#21</span>
+          <div class="episode-body">
+            <p class="episode-ep-title">じぶん時間を掴むヒントは、高校生！？</p>
+          </div>
+          <div class="episode-play"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+        </a>
+        <a href="https://open.spotify.com/show/6Hz9B1Zo7CJcPMm7tHPUVy" target="_blank" class="episode-item">
+          <span class="episode-num">#20</span>
+          <div class="episode-body">
+            <p class="episode-ep-title">自分と向き合う時間をつくりたいけど・・・（後編）</p>
+          </div>
+          <div class="episode-play"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+        </a>
+        <a href="https://open.spotify.com/show/6Hz9B1Zo7CJcPMm7tHPUVy" target="_blank" class="episode-item">
+          <span class="episode-num">#19</span>
+          <div class="episode-body">
+            <p class="episode-ep-title">自分と向き合う時間をつくりたいけど・・・（前編）</p>
+          </div>
+          <div class="episode-play"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+        </a>
+        <a href="https://open.spotify.com/show/6Hz9B1Zo7CJcPMm7tHPUVy" target="_blank" class="episode-item">
+          <span class="episode-num">#18</span>
+          <div class="episode-body">
+            <p class="episode-ep-title">森の話は\生き方\の話だ！岡山県がアツいんだ！！</p>
+          </div>
+          <div class="episode-play"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+        </a>
+        <a href="https://open.spotify.com/show/6Hz9B1Zo7CJcPMm7tHPUVy" target="_blank" class="episode-item">
+          <span class="episode-num">#17</span>
+          <div class="episode-body">
+            <p class="episode-ep-title">ホッとして、モヤっとして、ありがとう！</p>
+          </div>
+          <div class="episode-play"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+        </a>
+        <a href="https://open.spotify.com/show/6Hz9B1Zo7CJcPMm7tHPUVy" target="_blank" class="episode-item">
+          <span class="episode-num">#16</span>
+          <div class="episode-body">
+            <p class="episode-ep-title">嬉しいお便りと新コンテンツ！</p>
+          </div>
+          <div class="episode-play"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+        </a>
+        <a href="https://open.spotify.com/show/6Hz9B1Zo7CJcPMm7tHPUVy" target="_blank" class="episode-item">
+          <span class="episode-num">#15</span>
+          <div class="episode-body">
+            <p class="episode-ep-title">やらなきゃいけないんだけど...</p>
+          </div>
+          <div class="episode-play"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+        </a>
+        <a href="https://open.spotify.com/show/6Hz9B1Zo7CJcPMm7tHPUVy" target="_blank" class="episode-item">
+          <span class="episode-num">#14</span>
+          <div class="episode-body">
+            <p class="episode-ep-title">自分の「好き」をもってくる！舘野流経営論！？</p>
+          </div>
+          <div class="episode-play"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+        </a>
+        <a href="https://open.spotify.com/show/6Hz9B1Zo7CJcPMm7tHPUVy" target="_blank" class="episode-item">
+          <span class="episode-num">#13</span>
+          <div class="episode-body">
+            <p class="episode-ep-title">夏を振り返ると・・・防災グッズと芸術祭！</p>
+          </div>
+          <div class="episode-play"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+        </a>
+        <a href="https://open.spotify.com/show/6Hz9B1Zo7CJcPMm7tHPUVy" target="_blank" class="episode-item">
+          <span class="episode-num">#12</span>
+          <div class="episode-body">
+            <p class="episode-ep-title">我が社のインスタ ウラ話！</p>
+          </div>
+          <div class="episode-play"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+        </a>
+        <a href="https://open.spotify.com/show/6Hz9B1Zo7CJcPMm7tHPUVy" target="_blank" class="episode-item">
+          <span class="episode-num">#11</span>
+          <div class="episode-body">
+            <p class="episode-ep-title">仰天！幼少期の舘野社長のマル秘慣習！</p>
+          </div>
+          <div class="episode-play"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+        </a>
+        <a href="https://open.spotify.com/show/6Hz9B1Zo7CJcPMm7tHPUVy" target="_blank" class="episode-item">
+          <span class="episode-num">#10</span>
+          <div class="episode-body">
+            <p class="episode-ep-title">10回記念！「10」にちなんだ2つの問い！</p>
+          </div>
+          <div class="episode-play"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+        </a>
+        </div>
+      </div>
+      <div class="ep-tab-panel " data-panel="3">
+        <div class="episode-list">
+        <a href="https://open.spotify.com/show/6Hz9B1Zo7CJcPMm7tHPUVy" target="_blank" class="episode-item">
+          <span class="episode-num">#09</span>
+          <div class="episode-body">
+            <p class="episode-ep-title">社長の遊学！？留学！？の話と、スイーツ。</p>
+          </div>
+          <div class="episode-play"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+        </a>
+        <a href="https://open.spotify.com/show/6Hz9B1Zo7CJcPMm7tHPUVy" target="_blank" class="episode-item">
+          <span class="episode-num">#08</span>
+          <div class="episode-body">
+            <p class="episode-ep-title">「しずおかしおづけ」って何回言える！？</p>
+          </div>
+          <div class="episode-play"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+        </a>
+        <a href="https://open.spotify.com/show/6Hz9B1Zo7CJcPMm7tHPUVy" target="_blank" class="episode-item">
+          <span class="episode-num">#07</span>
+          <div class="episode-body">
+            <p class="episode-ep-title">2024年上半期を振り返ろう！でも、言語化って難しいですよね</p>
+          </div>
+          <div class="episode-play"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+        </a>
+        <a href="https://open.spotify.com/show/6Hz9B1Zo7CJcPMm7tHPUVy" target="_blank" class="episode-item">
+          <span class="episode-num">#06</span>
+          <div class="episode-body">
+            <p class="episode-ep-title">聴いて、聴いて！テーマソングを作ったよ！</p>
+          </div>
+          <div class="episode-play"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+        </a>
+        <a href="https://open.spotify.com/show/6Hz9B1Zo7CJcPMm7tHPUVy" target="_blank" class="episode-item">
+          <span class="episode-num">#05</span>
+          <div class="episode-body">
+            <p class="episode-ep-title">実は「飾っていた」自分にびっくりする社長</p>
+          </div>
+          <div class="episode-play"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+        </a>
+        <a href="https://open.spotify.com/show/6Hz9B1Zo7CJcPMm7tHPUVy" target="_blank" class="episode-item">
+          <span class="episode-num">#04</span>
+          <div class="episode-body">
+            <p class="episode-ep-title">社長の「朝」と「好きな時間」と、自信をもらちゃったお話</p>
+          </div>
+          <div class="episode-play"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+        </a>
+        <a href="https://open.spotify.com/show/6Hz9B1Zo7CJcPMm7tHPUVy" target="_blank" class="episode-item">
+          <span class="episode-num">#03</span>
+          <div class="episode-body">
+            <p class="episode-ep-title">新しい会議のカタチと、新しい人事評価制度！</p>
+          </div>
+          <div class="episode-play"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+        </a>
+        <a href="https://open.spotify.com/show/6Hz9B1Zo7CJcPMm7tHPUVy" target="_blank" class="episode-item">
+          <span class="episode-num">#02</span>
+          <div class="episode-body">
+            <p class="episode-ep-title">劇的！テレビで見てたあの匠が、ゲストに来てくれるまで。</p>
+          </div>
+          <div class="episode-play"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+        </a>
+        <a href="https://open.spotify.com/show/6Hz9B1Zo7CJcPMm7tHPUVy" target="_blank" class="episode-item">
+          <span class="episode-num">#01</span>
+          <div class="episode-body">
+            <p class="episode-ep-title">番組配信スタート！社長の愛とモヤモヤお届けします！</p>
+          </div>
+          <div class="episode-play"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+        </a>
+        </div>
+      </div>
+      </div>
+      <div class="episodes-more">
+        <a href="https://open.spotify.com/show/6Hz9B1Zo7CJcPMm7tHPUVy" target="_blank" class="episodes-more-btn">
+          Spotifyですべて聴く
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <div class="back-link-wrap">
+    <a href="marupa-meets.html" class="back-link">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+      トップへ戻る
+    </a>
+  </div>
+
+  <section class="links-section">
+    <p class="links-label">Follow us</p>
+    <div class="links-grid">
+      <a href="https://marupa.jp/" target="_blank" class="link-card">
+        <div class="link-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div>
+        <p class="link-name">会社HP</p>
+        <p class="link-url">marupa.jp</p>
+      </a>
+      <a href="https://www.instagram.com/satocompany_marupa/" target="_blank" class="link-card">
+        <div class="link-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></div>
+        <p class="link-name">Instagram</p>
+        <p class="link-url">@satocompany_marupa</p>
+      </a>
+      <a href="https://open.spotify.com/show/6Hz9B1Zo7CJcPMm7tHPUVy" target="_blank" class="link-card">
+        <div class="link-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 11.5c2.5-1 5.5-1 8 0"/><path d="M6.5 14.5c3.5-1.5 7.5-1.5 11 0"/><path d="M9.5 8.5c1.5-.5 5-.5 6.5 0"/></svg></div>
+        <p class="link-name">Podcast</p>
+        <p class="link-url">Spotify で聴く</p>
+      </a>
+    </div>
+  </section>
+
+  <footer>
+    <p class="footer-logo">SATO COMPANY / marupa meets ...</p>
+    <p class="footer-copy">© 2026 SATO COMPANY. All rights reserved.</p>
+  </footer>
+
+  <script>
+    var LEAF_SVGS = [
+      '<svg viewBox="0 0 44 64" fill="none"><path d="M22 58 C22 58 4 44 3 28 C2 12 12 2 22 2 C32 2 42 12 41 28 C40 44 22 58 22 58Z" fill="currentColor"/><line x1="22" y1="56" x2="22" y2="4" stroke="white" stroke-width="0.7" opacity="0.25"/></svg>',
+      '<svg viewBox="0 0 28 72" fill="none"><path d="M14 66 C14 66 2 50 2 32 C2 14 8 2 14 2 C20 2 26 14 26 32 C26 50 14 66 14 66Z" fill="currentColor"/><line x1="14" y1="64" x2="14" y2="4" stroke="white" stroke-width="0.6" opacity="0.25"/></svg>',
+      '<svg viewBox="0 0 48 60" fill="none"><path d="M24 54 C24 54 2 42 2 24 C2 8 12 2 24 4 C36 2 46 8 46 24 C46 42 24 54 24 54Z" fill="currentColor"/><line x1="24" y1="52" x2="24" y2="6" stroke="white" stroke-width="0.7" opacity="0.25"/></svg>'
+    ];
+    var LEAF_COLORS = ['#a8c8aa', '#7aaa7e', '#b8d4ba', '#8ab88e', '#c8deca'];
+    function spawnLeaf() {
+      var el = document.createElement('div'); el.className = 'falling-leaf';
+      var size = Math.random() * 22 + 12, x = Math.random() * 110 - 5, dur = Math.random() * 12 + 16;
+      var delay = Math.random() * -dur, sway = Math.random() * 140 - 70, rot0 = Math.random() * 360;
+      var opacity = Math.random() * 0.10 + 0.06, color = LEAF_COLORS[Math.floor(Math.random() * LEAF_COLORS.length)];
+      el.style.cssText = 'left:' + x + 'vw;width:' + size + 'px;height:' + (size*1.5) + 'px;color:' + color + ';--r0:' + rot0 + 'deg;--sx:' + sway + 'px;--op:' + opacity + ';animation:leaf-fall ' + dur + 's linear ' + delay + 's infinite;';
+      el.innerHTML = LEAF_SVGS[Math.floor(Math.random() * LEAF_SVGS.length)];
+      document.body.appendChild(el);
+    }
+    for (var i = 0; i < 6; i++) spawnLeaf();
+
+    // Tab switching
+    function switchTab(tab) {
+      document.querySelectorAll('.ep-tab-btn, .ep-tab-btn-bottom').forEach(function(b){ b.classList.remove('active'); });
+      document.querySelectorAll('.ep-tab-panel').forEach(function(p){ p.classList.remove('active'); });
+      document.querySelectorAll('[data-tab="' + tab + '"]').forEach(function(b){ b.classList.add('active'); });
+      document.querySelector('.ep-tab-panel[data-panel="' + tab + '"]').classList.add('active');
+    }
+    // Insert bottom tab bars
+    var tabLabels = ['#70〜#99', '#40〜#69', '#10〜#39', '#01〜#09'];
+    document.querySelectorAll('.ep-tab-panel').forEach(function(panel) {
+      var bar = document.createElement('div');
+      bar.className = 'ep-tab-bar ep-tab-bar-bottom';
+      tabLabels.forEach(function(label, i) {
+        var btn = document.createElement('button');
+        btn.className = 'ep-tab-btn ep-tab-btn-bottom' + (panel.dataset.panel == i ? ' active' : '');
+        btn.dataset.tab = i;
+        btn.textContent = label;
+        bar.appendChild(btn);
+      });
+      panel.appendChild(bar);
+    });
+
+    document.querySelectorAll('.ep-tab-btn, .ep-tab-btn-bottom').forEach(function(btn) {
+      btn.addEventListener('click', function() { switchTab(this.dataset.tab); });
+    });
+  </script>
+</body>
+</html>
