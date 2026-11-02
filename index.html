@@ -284,9 +284,11 @@
     /* ── SECTION HEADLINE ── */
     .section-headline {
       display: flex;
-      align-items: baseline;
-      gap: 16px;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
       margin-bottom: 52px;
+      text-align: center;
     }
     .section-num {
       font-size: 10px;
@@ -446,13 +448,13 @@
     }
 
     .miru-inner .section-headline { margin-bottom: 8px; }
-    .kiku-inner .section-headline { align-items: center; }
     .miru-desc {
       font-size: 14px;
       color: rgba(26, 46, 29, 0.55);
       line-height: 2;
       margin: 0 0 32px;
       max-width: 540px;
+      text-align: center;
     }
     .kiku-desc {
       font-size: 14px;
@@ -460,6 +462,7 @@
       line-height: 2;
       margin-bottom: 36px;
       max-width: 540px;
+      text-align: center;
     }
     .spotify-wrap {
       border-radius: 12px;
@@ -863,14 +866,14 @@
           <div class="section-title-en" style="color:var(--cream)">聴く</div>
           <div class="section-title-sub" style="color:var(--moss-pale)">Podcast</div>
         </div>
-        <div class="waveform reveal" style="margin-left:auto;margin-bottom:0">
-          <div class="waveform-bar"></div><div class="waveform-bar"></div>
-          <div class="waveform-bar"></div><div class="waveform-bar"></div>
-          <div class="waveform-bar"></div><div class="waveform-bar"></div>
-          <div class="waveform-bar"></div><div class="waveform-bar"></div>
-          <div class="waveform-bar"></div><div class="waveform-bar"></div>
-          <div class="waveform-bar"></div><div class="waveform-bar"></div>
-        </div>
+      </div>
+      <div class="waveform reveal">
+        <div class="waveform-bar"></div><div class="waveform-bar"></div>
+        <div class="waveform-bar"></div><div class="waveform-bar"></div>
+        <div class="waveform-bar"></div><div class="waveform-bar"></div>
+        <div class="waveform-bar"></div><div class="waveform-bar"></div>
+        <div class="waveform-bar"></div><div class="waveform-bar"></div>
+        <div class="waveform-bar"></div><div class="waveform-bar"></div>
       </div>
       <p class="kiku-desc reveal">声を聞くと、その人のことが少し身近に感じられる。<br><br>仕事のこと、日々のこと、ちょっとした愚痴まで。<br>飾らない声と会話をお届けします。</p>
       <div class="spotify-wrap reveal">
