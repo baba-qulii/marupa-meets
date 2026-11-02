@@ -448,44 +448,46 @@
       to   { transform: scaleY(1); }
     }
 
-    /* ── 観る film frames ── */
-    .film-strip {
+    /* ── 観る shutter iris ── */
+    .shutter-wrap {
       display: flex;
-      align-items: center;
       justify-content: center;
-      gap: 5px;
-      height: 28px;
       margin-bottom: 32px;
     }
-    .film-frame {
-      width: 14px;
-      height: 20px;
-      border: 1.5px solid currentColor;
-      border-radius: 2px;
-      opacity: 0.3;
-      animation: filmFlicker 2.4s ease-in-out infinite alternate;
+    .shutter-iris {
+      width: 32px;
+      height: 32px;
+      position: relative;
+      animation: irisRotate 8s linear infinite;
     }
-    .film-frame::before {
+    .shutter-iris::before {
       content: '';
-      display: block;
-      width: 6px;
-      height: 6px;
+      position: absolute;
+      inset: 0;
       border-radius: 50%;
-      background: currentColor;
-      margin: auto;
-      margin-top: 5px;
-      opacity: 0.6;
+      border: 1px solid currentColor;
+      opacity: 0.3;
     }
-    .film-frame:nth-child(1) { animation-delay: 0.0s; opacity: 0.25; }
-    .film-frame:nth-child(2) { animation-delay: 0.3s; opacity: 0.5;  }
-    .film-frame:nth-child(3) { animation-delay: 0.1s; opacity: 0.65; }
-    .film-frame:nth-child(4) { animation-delay: 0.5s; opacity: 0.45; }
-    .film-frame:nth-child(5) { animation-delay: 0.2s; opacity: 0.3;  }
-    @keyframes filmFlicker {
-      0%   { opacity: var(--op, 0.3); }
-      40%  { opacity: calc(var(--op, 0.3) * 1.8); }
-      60%  { opacity: calc(var(--op, 0.3) * 0.6); }
-      100% { opacity: calc(var(--op, 0.3) * 1.4); }
+    .shutter-petal {
+      position: absolute;
+      width: 9px;
+      height: 17px;
+      border: 1.5px solid currentColor;
+      border-radius: 5px 5px 3px 3px;
+      left: 11.5px;
+      top: 1px;
+      transform-origin: 4.5px 14px;
+      opacity: 0.45;
+    }
+    .shutter-petal:nth-child(2) { transform: rotate(0deg);   opacity: 0.5; }
+    .shutter-petal:nth-child(3) { transform: rotate(60deg);  opacity: 0.35; }
+    .shutter-petal:nth-child(4) { transform: rotate(120deg); opacity: 0.5; }
+    .shutter-petal:nth-child(5) { transform: rotate(180deg); opacity: 0.35; }
+    .shutter-petal:nth-child(6) { transform: rotate(240deg); opacity: 0.5; }
+    .shutter-petal:nth-child(7) { transform: rotate(300deg); opacity: 0.35; }
+    @keyframes irisRotate {
+      from { transform: rotate(0deg); }
+      to   { transform: rotate(360deg); }
     }
 
     /* ── 読む text lines ── */
@@ -875,12 +877,15 @@
           <div class="section-title-sub">marupa meets シリーズ</div>
         </div>
       </div>
-      <div class="film-strip reveal" style="color:var(--dark3)">
-        <div class="film-frame"></div>
-        <div class="film-frame"></div>
-        <div class="film-frame"></div>
-        <div class="film-frame"></div>
-        <div class="film-frame"></div>
+      <div class="shutter-wrap reveal">
+        <div class="shutter-iris" style="color:var(--dark3)">
+          <div class="shutter-petal"></div>
+          <div class="shutter-petal"></div>
+          <div class="shutter-petal"></div>
+          <div class="shutter-petal"></div>
+          <div class="shutter-petal"></div>
+          <div class="shutter-petal"></div>
+        </div>
       </div>
       <p class="miru-desc reveal">パレットが支える空間に密着した、リアルな記録。</p>
     </div>
