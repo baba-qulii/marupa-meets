@@ -689,6 +689,10 @@
     .btn-cta:hover { background: transparent; color: var(--dark); }
     @media (max-width: 600px) { .concept-inner { grid-template-columns: 1fr; } .cta-buttons { flex-direction: column; align-items: center; } }
     /* ── LINKS ── */
+    @keyframes gallery-scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+    .gallery-strip { overflow: hidden; background: var(--dark); padding: 28px 0; border-top: 0.5px solid rgba(255,255,255,0.08); }
+    .gallery-track { display: flex; gap: 10px; width: max-content; animation: gallery-scroll 80s linear infinite; will-change: transform; }
+    .gallery-item { height: 200px; width: auto; object-fit: cover; border-radius: 6px; flex-shrink: 0; display: block; }
     .links-section { background: var(--dark); padding: 64px 24px; text-align: center; border-top: 0.5px solid rgba(255,255,255,0.12); }
     .links-label { font-size: 11px; letter-spacing: 0.2em; color: var(--moss-pale); text-transform: uppercase; margin-bottom: 32px; }
     .links-grid { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; max-width: 600px; margin: 0 auto; }
@@ -1108,6 +1112,40 @@
       <a href="レンタル表.pdf" target="_blank" class="btn-cta">パレットレンタル表</a>
     </div>
   </section>
+
+  <!-- GALLERY STRIP -->
+  <div class="gallery-strip">
+    <div class="gallery-track">
+      <img class="gallery-item" src="gallery-DSC03955.jpg" alt="">
+      <img class="gallery-item" src="gallery-DSC03903.jpg" alt="">
+      <img class="gallery-item" src="gallery-DSC08329.jpg" alt="">
+      <img class="gallery-item" src="gallery-DSC08341.jpg" alt="">
+      <img class="gallery-item" src="gallery-DSC08512.jpg" alt="">
+      <img class="gallery-item" src="gallery-583A6157-fix.jpg" alt="">
+      <img class="gallery-item" src="gallery-DSC09518.jpg" alt="">
+      <img class="gallery-item" src="gallery-MYK01111.jpg" alt="">
+      <img class="gallery-item" src="gallery-MYK01106-2.jpg" alt="">
+      <img class="gallery-item" src="gallery-MYK01103.jpg" alt="">
+      <img class="gallery-item" src="gallery-MYK01092.jpg" alt="">
+      <img class="gallery-item" src="gallery-MYK01086.jpg" alt="">
+      <img class="gallery-item" src="gallery-MYK01072-2.jpg" alt="">
+      <img class="gallery-item" src="gallery-25JAPANSHOP00005.jpg" alt="">
+      <img class="gallery-item" src="gallery-DSC03955.jpg" alt="">
+      <img class="gallery-item" src="gallery-DSC03903.jpg" alt="">
+      <img class="gallery-item" src="gallery-DSC08329.jpg" alt="">
+      <img class="gallery-item" src="gallery-DSC08341.jpg" alt="">
+      <img class="gallery-item" src="gallery-DSC08512.jpg" alt="">
+      <img class="gallery-item" src="gallery-583A6157-fix.jpg" alt="">
+      <img class="gallery-item" src="gallery-DSC09518.jpg" alt="">
+      <img class="gallery-item" src="gallery-MYK01111.jpg" alt="">
+      <img class="gallery-item" src="gallery-MYK01106-2.jpg" alt="">
+      <img class="gallery-item" src="gallery-MYK01103.jpg" alt="">
+      <img class="gallery-item" src="gallery-MYK01092.jpg" alt="">
+      <img class="gallery-item" src="gallery-MYK01086.jpg" alt="">
+      <img class="gallery-item" src="gallery-MYK01072-2.jpg" alt="">
+      <img class="gallery-item" src="gallery-25JAPANSHOP00005.jpg" alt="">
+    </div>
+  </div>
 
   <!-- FOOTER -->
   <section class="links-section">
