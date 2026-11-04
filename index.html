@@ -669,6 +669,10 @@
     .links-label { font-size: 11px; letter-spacing: 0.2em; color: var(--moss-pale); text-transform: uppercase; margin-bottom: 32px; }
     .links-grid { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; max-width: 600px; margin: 0 auto; }
     .link-card { display: flex; flex-direction: column; align-items: center; gap: 8px; padding: 24px 28px; background: rgba(255,255,255,0.05); border: 0.5px solid rgba(255,255,255,0.12); border-radius: 12px; text-decoration: none; color: #ffffff; transition: background 0.2s; min-width: 140px; }
+    @media (max-width: 600px) {
+      .links-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; max-width: 100%; }
+      .link-card { min-width: 0; padding: 16px 8px; }
+    }
     .link-card:hover { background: rgba(255,255,255,0.1); }
     .link-icon { color: var(--moss-pale); }
     .link-name { font-size: 13px; letter-spacing: 0.1em; }
