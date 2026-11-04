@@ -665,6 +665,30 @@
     .note-cta:hover { background: var(--moss-light); }
 
     /* ── FOOTER ── */
+    /* ── CONCEPT ── */
+    .concept-section { position: relative; background: var(--dark); padding: 72px 24px; border-top: 0.5px solid rgba(255,255,255,0.12); border-bottom: 0.5px solid rgba(255,255,255,0.12); }
+    .deco-wrap { position: absolute; inset: 0; overflow: hidden; pointer-events: none; }
+    .deco-pallet { position: absolute; opacity: 0.06; }
+    .deco-pallet svg { animation: pallet-float 12s ease-in-out infinite; }
+    @keyframes pallet-float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
+    .concept-inner { max-width: 860px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; }
+    .concept-visual { height: 240px; background: var(--dark2); border-radius: 12px; overflow: hidden; }
+    .concept-visual img { width: 100%; height: 100%; object-fit: cover; }
+    .concept-label { font-size: 11px; letter-spacing: 0.18em; color: var(--moss-pale); text-transform: uppercase; margin-bottom: 12px; }
+    .concept-title { font-size: 22px; font-weight: 500; color: #ffffff; margin-bottom: 12px; line-height: 1.5; }
+    .concept-body { font-size: 14px; color: rgba(255,255,255,0.7); line-height: 1.9; margin-bottom: 20px; }
+    .tag-row { display: flex; gap: 8px; flex-wrap: wrap; }
+    .tag { font-size: 12px; padding: 4px 12px; background: #ffffff; color: var(--dark); border-radius: 20px; font-weight: 500; }
+    /* ── CTA ── */
+    .cta-section { padding: 80px 24px; text-align: center; background: var(--cream); border-top: 0.5px solid #b8b0a0; }
+    .cta-label { font-size: 11px; letter-spacing: 0.18em; color: var(--moss-light); text-transform: uppercase; margin-bottom: 12px; }
+    .cta-title { font-size: 22px; font-weight: 500; color: var(--dark); margin-bottom: 12px; }
+    .cta-body { font-size: 14px; color: #3a3830; line-height: 1.85; margin-bottom: 32px; }
+    .cta-buttons { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+    .btn-cta { display: inline-block; padding: 13px 28px; background: var(--dark); color: #ffffff; border-radius: 8px; font-size: 14px; cursor: pointer; border: 1.5px solid var(--dark); font-weight: 500; font-family: inherit; text-decoration: none; transition: background 0.25s, color 0.25s; }
+    .btn-cta:hover { background: transparent; color: var(--dark); }
+    @media (max-width: 600px) { .concept-inner { grid-template-columns: 1fr; } .cta-buttons { flex-direction: column; align-items: center; } }
+    /* ── LINKS ── */
     .links-section { background: var(--dark); padding: 64px 24px; text-align: center; border-top: 0.5px solid rgba(255,255,255,0.12); }
     .links-label { font-size: 11px; letter-spacing: 0.2em; color: var(--moss-pale); text-transform: uppercase; margin-bottom: 32px; }
     .links-grid { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; max-width: 600px; margin: 0 auto; }
@@ -1036,6 +1060,52 @@
         <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M3 3h18v2H3V3zm0 4h12v2H3V7zm0 4h18v2H3v-2zm0 4h12v2H3v-2zm0 4h18v2H3v-2z"/></svg>
         記事一覧はこちら
       </a>
+    </div>
+  </section>
+
+  <!-- CONCEPT -->
+  <section class="concept-section">
+    <div class="deco-wrap">
+      <div class="deco-pallet" style="right:0;bottom:0;--r:0deg;--dur:12s;--delay:-5s;color:var(--moss-pale)">
+        <svg width="120" height="90" viewBox="0 0 80 60" fill="none">
+          <rect x="0" y="0" width="80" height="8" rx="1" fill="currentColor"/>
+          <rect x="0" y="11" width="80" height="8" rx="1" fill="currentColor"/>
+          <rect x="0" y="22" width="80" height="8" rx="1" fill="currentColor"/>
+          <rect x="0" y="33" width="80" height="8" rx="1" fill="currentColor"/>
+          <rect x="0" y="44" width="80" height="8" rx="1" fill="currentColor"/>
+          <rect x="4" y="0" width="12" height="52" rx="1" fill="currentColor" opacity="0.6"/>
+          <rect x="34" y="0" width="12" height="52" rx="1" fill="currentColor" opacity="0.6"/>
+          <rect x="64" y="0" width="12" height="52" rx="1" fill="currentColor" opacity="0.6"/>
+        </svg>
+      </div>
+    </div>
+    <div class="concept-inner">
+      <div class="concept-visual">
+        <img src="gallery-MYK01111.jpg" alt="">
+      </div>
+      <div>
+        <p class="concept-label">Concept</p>
+        <h2 class="concept-title">パレットの可能性を、<br>もっと自由に。</h2>
+        <p class="concept-body">物流の道具として生まれた木製パレット。その木の質感とあたたかみは、人と活動が交わる空間の土台として、役割を広げています。</p>
+        <div class="tag-row">
+          <span class="tag">場づくり</span>
+          <span class="tag">循環素材</span>
+          <span class="tag">国産木材</span>
+          <span class="tag">余白のある空間</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <p class="cta-label">Catalogue</p>
+    <h2 class="cta-title">木製パレットのあれこれ</h2>
+    <p class="cta-body">事例やレンタル表など、詳しくはこちらをご覧ください。</p>
+    <div class="cta-buttons">
+      <a href="パレット活用事例.pdf" target="_blank" class="btn-cta">パレット活用事例</a>
+      <a href="会社紹介.pdf" target="_blank" class="btn-cta">会社紹介</a>
+      <a href="レンタル表.pdf" target="_blank" class="btn-cta">パレットレンタル表</a>
     </div>
   </section>
 
