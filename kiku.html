@@ -68,7 +68,7 @@
     .btn-cta { display: inline-block; padding: 13px 28px; background: var(--dark); color: #ffffff; border-radius: 8px; font-size: 14px; cursor: pointer; border: 1.5px solid var(--dark); font-weight: 500; font-family: inherit; text-decoration: none; transition: background 0.25s, color 0.25s; }
     .btn-cta:hover { background: transparent; color: var(--dark); }
     .gallery-strip { overflow: hidden; background: var(--dark); padding: 28px 0; border-top: 0.5px solid rgba(255,255,255,0.08); }
-    .gallery-track { display: flex; gap: 10px; width: max-content; animation: gallery-scroll 80s linear infinite; will-change: transform; -webkit-backface-visibility: hidden; backface-visibility: hidden; }
+    .gallery-track { display: flex; gap: 10px; width: max-content; will-change: transform; -webkit-backface-visibility: hidden; backface-visibility: hidden; }
     .gallery-item { height: 200px; width: auto; object-fit: cover; border-radius: 6px; flex-shrink: 0; display: block; }
     @media (max-width: 600px) { .concept-inner { grid-template-columns: 1fr; } .cta-buttons { flex-direction: column; align-items: center; } }
     .links-section { background: var(--dark); padding: 64px 24px; text-align: center; border-top: 0.5px solid rgba(255,255,255,0.12); }
@@ -1020,6 +1020,30 @@
     document.querySelectorAll('.ep-tab-btn, .ep-tab-btn-bottom').forEach(function(btn) {
       btn.addEventListener('click', function() { switchTab(this.dataset.tab); });
     });
+  </script>
+  <script>
+    (function() {
+      function runGallery(track, pxPerSec) {
+        var pos = 0, prev = null;
+        function step(ts) {
+          var half = track.scrollWidth / 2;
+          if (half > 0) {
+            if (prev !== null) {
+              pos += pxPerSec * (ts - prev) / 1000;
+              if (pos >= half) pos -= half;
+              track.style.transform = 'translateX(-' + pos + 'px)';
+            }
+            prev = ts;
+          }
+          requestAnimationFrame(step);
+        }
+        document.addEventListener('visibilitychange', function() {
+          if (document.hidden) prev = null;
+        });
+        requestAnimationFrame(step);
+      }
+      document.querySelectorAll('.gallery-track').forEach(function(t) { runGallery(t, 50); });
+    })();
   </script>
 
 </body>

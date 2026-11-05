@@ -699,10 +699,10 @@
     /* ── LINKS ── */
     @keyframes gallery-scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
     .gallery-strip { overflow: hidden; background: var(--dark); padding: 28px 0; border-top: 0.5px solid rgba(255,255,255,0.08); }
-    .gallery-track { display: flex; gap: 10px; width: max-content; animation: gallery-scroll 80s linear infinite; will-change: transform; -webkit-backface-visibility: hidden; backface-visibility: hidden; }
+    .gallery-track { display: flex; gap: 10px; width: max-content; will-change: transform; -webkit-backface-visibility: hidden; backface-visibility: hidden; }
     .gallery-item { height: 200px; width: auto; object-fit: cover; border-radius: 6px; flex-shrink: 0; display: block; }
     .kiku-gallery-strip { overflow: hidden; background: var(--dark2); padding: 20px 0 48px; border-top: 0.5px solid rgba(168,200,170,0.12); }
-    .kiku-gallery-track { display: flex; gap: 10px; width: max-content; animation: gallery-scroll 60s linear infinite; will-change: transform; -webkit-backface-visibility: hidden; backface-visibility: hidden; }
+    .kiku-gallery-track { display: flex; gap: 10px; width: max-content; will-change: transform; -webkit-backface-visibility: hidden; backface-visibility: hidden; }
     .kiku-gallery-item { height: 180px; width: auto; object-fit: cover; border-radius: 6px; flex-shrink: 0; display: block; }
     .links-section { background: var(--dark); padding: 64px 24px; text-align: center; border-top: 0.5px solid rgba(255,255,255,0.12); }
     .links-label { font-size: 11px; letter-spacing: 0.2em; color: var(--moss-pale); text-transform: uppercase; margin-bottom: 32px; }
@@ -1409,6 +1409,31 @@
     setInterval(function() {
       if (document.querySelectorAll('.falling-leaf').length < 18) spawnLeaf();
     }, 3500);
+  </script>
+  <script>
+    (function() {
+      function runGallery(track, pxPerSec) {
+        var pos = 0, prev = null;
+        function step(ts) {
+          var half = track.scrollWidth / 2;
+          if (half > 0) {
+            if (prev !== null) {
+              pos += pxPerSec * (ts - prev) / 1000;
+              if (pos >= half) pos -= half;
+              track.style.transform = 'translateX(-' + pos + 'px)';
+            }
+            prev = ts;
+          }
+          requestAnimationFrame(step);
+        }
+        document.addEventListener('visibilitychange', function() {
+          if (document.hidden) prev = null;
+        });
+        requestAnimationFrame(step);
+      }
+      document.querySelectorAll('.gallery-track').forEach(function(t) { runGallery(t, 50); });
+      document.querySelectorAll('.kiku-gallery-track').forEach(function(t) { runGallery(t, 50); });
+    })();
   </script>
   <script>
     (function() {
