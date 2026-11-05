@@ -155,23 +155,6 @@
       animation: fadeUp 0.7s ease 1.4s forwards;
       margin-bottom: 10px;
     }
-    .tagline-mark {
-      position: relative;
-      display: inline-block;
-    }
-    .tagline-mark::after {
-      content: '';
-      position: absolute;
-      bottom: -4px;
-      left: 0;
-      right: 0;
-      height: 1.5px;
-      background: var(--wood);
-      transform: scaleX(0);
-      transform-origin: left;
-      animation: taglineUnderline 0.6s cubic-bezier(0.16, 1, 0.3, 1) 2.2s forwards;
-    }
-    @keyframes taglineUnderline { to { transform: scaleX(1); } }
     .hero-sub-tagline {
       font-size: clamp(16px, 2.4vw, 19px);
       color: rgba(214, 207, 192, 0.55);
@@ -947,7 +930,7 @@
         <span class="hero-word">meets</span>
         <span class="hero-word">...</span>
       </h1>
-      <p class="hero-tagline"><span class="tagline-mark">「運ぶ、だけじゃない。」</span></p>
+      <p class="hero-tagline">「運ぶ、だけじゃない。」</p>
       <p class="hero-sub-tagline">パレットから広がる、人と場所の物語。</p>
       <div class="hero-cats">
         <a href="#miru" class="hero-cat">観る</a>
