@@ -325,7 +325,8 @@
     }
     .vol-scroll-wrap::-webkit-scrollbar { display: none; }
     @media (max-width: 600px) {
-      .vol-scroll-wrap { justify-content: flex-start; padding-left: 20px; }
+      .vol-scroll-wrap { justify-content: flex-start; padding: 8px 40px 24px; }
+      .vol-card { scroll-snap-align: center; }
     }
 
     .vol-card {
@@ -1407,6 +1408,17 @@
     setInterval(function() {
       if (document.querySelectorAll('.falling-leaf').length < 18) spawnLeaf();
     }, 3500);
+  </script>
+  <script>
+    (function() {
+      if (window.innerWidth > 600) return;
+      var wrap = document.querySelector('.vol-scroll-wrap');
+      if (!wrap) return;
+      var cards = wrap.querySelectorAll('.vol-card');
+      if (cards.length < 2) return;
+      var second = cards[1];
+      wrap.scrollLeft = second.offsetLeft - (wrap.offsetWidth - second.offsetWidth) / 2;
+    })();
   </script>
 
 </body>
