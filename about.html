@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
+  <title>会社について | marupa meets ... | SATO COMPANY</title>
+  <link rel="icon" type="image/png" href="favicon.png">
+  <meta property="og:title" content="会社について | SATO COMPANY">
+  <meta property="og:image" content="ogp.png">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --cream: #d6cfc0;
+      --dark: #0f1f12;
+      --dark2: #162819;
+      --dark3: #1a2e1d;
+      --white: #ffffff;
+      --moss-light: #4a7a4e;
+      --moss-pale: #a8c8aa;
+      --wood: #c4a06a;
+      --wood-light: #d4b882;
+      --text: #1a2e1d;
+      --text-sub: #4a5e48;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Zen Kaku Gothic New', 'Hiragino Kaku Gothic ProN', sans-serif; background: var(--cream); color: var(--text); overflow-x: hidden; }
+
+    /* HEADER */
+    .site-header { position: fixed; top: 0; left: 0; right: 0; z-index: 200; padding: 20px 40px; display: flex; align-items: center; justify-content: space-between; background: rgba(26, 46, 29, 0.92); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 0.5px solid rgba(168, 200, 170, 0.12); }
+    .header-logo { font-size: 13px; letter-spacing: 0.22em; color: rgba(214, 207, 192, 0.88); text-decoration: none; }
+    .header-back { font-size: 11px; letter-spacing: 0.14em; color: rgba(168, 200, 170, 0.6); text-decoration: none; display: flex; align-items: center; gap: 6px; font-family: sans-serif; transition: color 0.2s; }
+    .header-back:hover { color: var(--moss-pale); }
+    @media (max-width: 600px) { .site-header { padding: 16px 20px; } }
+
+    /* PAGE HERO */
+    .page-hero { background: var(--dark); padding: 120px 24px 72px; text-align: center; position: relative; overflow: hidden; }
+    .page-hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 60% 50% at 50% 60%, rgba(74, 122, 78, 0.12) 0%, transparent 70%); pointer-events: none; }
+    .page-hero-title { font-size: clamp(32px, 6vw, 56px); font-weight: 400; color: var(--cream); line-height: 1; margin-bottom: 16px; position: relative; }
+    .page-hero-sub { font-size: 13px; color: rgba(168, 200, 170, 0.5); letter-spacing: 0.1em; }
+
+    /* VIDEO SECTION */
+    .video-section { background: var(--dark2); padding: 56px 24px 64px; }
+    .video-inner { max-width: 860px; margin: 0 auto; }
+    .video-wrap { position: relative; padding: 56.25% 0 0; border-radius: 10px; overflow: hidden; background: #111; }
+    .video-wrap iframe { position: absolute; inset: 0; width: 100%; height: 100%; }
+    .video-placeholder { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px; color: rgba(168, 200, 170, 0.35); }
+    .video-placeholder svg { width: 48px; height: 48px; opacity: 0.6; }
+    .video-placeholder p { font-size: 13px; letter-spacing: 0.14em; }
+
+    /* 想い SECTION */
+    .omoi-section { background: var(--dark); padding: 80px 24px 88px; text-align: center; position: relative; }
+    .omoi-eyebrow { font-size: 11px; letter-spacing: 0.22em; color: var(--moss-pale); text-transform: uppercase; margin-bottom: 32px; font-family: sans-serif; }
+    .omoi-body { max-width: 560px; margin: 0 auto; font-size: clamp(14px, 2vw, 16px); color: rgba(214, 207, 192, 0.85); line-height: 2.1; }
+    .omoi-body p { margin-bottom: 1.6em; }
+    .omoi-body p:last-child { margin-bottom: 0; }
+    .omoi-placeholder { font-size: 11px; letter-spacing: 0.08em; color: rgba(168, 200, 170, 0.3); margin-top: 28px; }
+
+    /* WAVE */
+    .wave { display: block; width: 100%; line-height: 0; overflow: hidden; }
+
+    /* 会社概要 SECTION */
+    .kaisha-section { background: var(--cream); padding: 72px 24px 80px; }
+    .section-inner { max-width: 760px; margin: 0 auto; }
+    .section-eyebrow { font-size: 11px; letter-spacing: 0.22em; color: var(--moss-light); text-transform: uppercase; margin-bottom: 10px; font-family: sans-serif; }
+    .section-heading { font-size: clamp(22px, 3.5vw, 32px); font-weight: 400; color: var(--text); margin-bottom: 40px; }
+    .kaisha-table { width: 100%; border-collapse: collapse; }
+    .kaisha-table tr { border-bottom: 0.5px solid rgba(74, 122, 78, 0.15); }
+    .kaisha-table tr:first-child { border-top: 0.5px solid rgba(74, 122, 78, 0.15); }
+    .kaisha-table th { width: 36%; padding: 18px 16px 18px 0; font-size: 12px; letter-spacing: 0.08em; color: var(--moss-light); font-weight: 400; text-align: left; vertical-align: top; white-space: nowrap; }
+    .kaisha-table td { padding: 18px 0; font-size: 13px; color: var(--text); line-height: 1.85; vertical-align: top; }
+    .kaisha-table td .address-row { display: flex; gap: 12px; margin-bottom: 6px; }
+    .kaisha-table td .address-row:last-child { margin-bottom: 0; }
+    .address-label { font-size: 11px; color: var(--moss-light); white-space: nowrap; flex-shrink: 0; min-width: 60px; }
+    .jigyou-list { list-style: none; display: flex; flex-direction: column; gap: 4px; }
+    .jigyou-list li::before { content: '—  '; color: var(--moss-light); font-size: 11px; }
+    @media (max-width: 600px) {
+      .kaisha-table th { width: 32%; font-size: 11px; padding-right: 10px; }
+      .kaisha-table td { font-size: 12px; }
+      .kaisha-table td .address-row { flex-direction: column; gap: 2px; margin-bottom: 10px; }
+      .address-label { min-width: auto; }
+    }
+
+    /* 歩み SECTION */
+    .ayumi-section { background: var(--dark2); padding: 80px 24px 96px; }
+    .ayumi-inner { max-width: 640px; margin: 0 auto; }
+    .ayumi-eyebrow { font-size: 11px; letter-spacing: 0.22em; color: var(--moss-pale); text-transform: uppercase; margin-bottom: 10px; font-family: sans-serif; }
+    .ayumi-heading { font-size: clamp(22px, 3.5vw, 32px); font-weight: 400; color: var(--cream); margin-bottom: 56px; }
+    .timeline { position: relative; padding-left: 32px; }
+    .timeline::before { content: ''; position: absolute; left: 6px; top: 8px; bottom: 8px; width: 1px; background: linear-gradient(to bottom, transparent, rgba(168, 200, 170, 0.3) 8%, rgba(168, 200, 170, 0.3) 92%, transparent); }
+    .timeline-item { position: relative; margin-bottom: 44px; }
+    .timeline-item:last-child { margin-bottom: 0; }
+    .timeline-dot { position: absolute; left: -29px; top: 7px; width: 9px; height: 9px; border-radius: 50%; background: var(--moss-light); box-shadow: 0 0 0 4px rgba(74, 122, 78, 0.18); }
+    .timeline-year { font-size: 12px; letter-spacing: 0.18em; color: var(--moss-pale); font-family: sans-serif; margin-bottom: 8px; }
+    .timeline-event { font-size: 13px; color: rgba(214, 207, 192, 0.8); line-height: 1.85; }
+
+    /* BACK TO TOP */
+    .back-to-top { background: var(--dark); padding: 48px 24px; text-align: center; border-top: 0.5px solid rgba(168, 200, 170, 0.08); }
+    .btn-top { display: inline-flex; flex-direction: column; align-items: center; gap: 8px; text-decoration: none; color: rgba(168, 200, 170, 0.5); font-size: 11px; letter-spacing: 0.18em; font-family: sans-serif; transition: color 0.25s; }
+    .btn-top:hover { color: var(--moss-pale); }
+    .btn-top svg { transition: transform 0.3s; }
+    .btn-top:hover svg { transform: translateY(-4px); }
+
+    /* FOOTER */
+    footer { background: var(--dark); padding: 48px 40px; text-align: center; border-top: 0.5px solid rgba(168, 200, 170, 0.1); }
+    .footer-logo { font-size: 12px; letter-spacing: 0.28em; color: rgba(168, 200, 170, 0.28); margin-bottom: 10px; }
+    .footer-copy { font-size: 10px; letter-spacing: 0.1em; color: rgba(168, 200, 170, 0.15); font-family: sans-serif; }
+
+    /* REVEAL */
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.9s ease, transform 0.9s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* FALLING LEAVES */
+    .falling-leaf { position: fixed; top: -80px; pointer-events: none; z-index: 0; }
+    @keyframes leaf-fall {
+      0%   { transform: translateY(0) translateX(0) rotate(var(--r0)); opacity: 0; }
+      5%   { opacity: var(--op); }
+      40%  { transform: translateY(40vh) translateX(var(--sx)) rotate(calc(var(--r0) + 80deg)); }
+      70%  { transform: translateY(75vh) translateX(calc(var(--sx) * -0.4)) rotate(calc(var(--r0) + 160deg)); }
+      95%  { opacity: var(--op); }
+      100% { transform: translateY(110vh) translateX(calc(var(--sx) * 0.6)) rotate(calc(var(--r0) + 260deg)); opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="site-header">
+    <a href="marupa-meets.html" class="header-logo">marupa meets ...</a>
+    <a href="marupa-meets.html" class="header-back">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+      トップへ戻る
+    </a>
+  </header>
+
+  <div class="page-hero">
+    <h1 class="page-hero-title">会社について</h1>
+    <p class="page-hero-sub">SATO COMPANY — 1967年から、パレットとともに。</p>
+  </div>
+
+  <!-- VIDEO -->
+  <section class="video-section">
+    <div class="video-inner reveal">
+      <div class="video-wrap">
+        <!-- 動画URLが決まったらここに iframe を入れてください -->
+        <div class="video-placeholder">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg>
+          <p>動画準備中</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 想い -->
+  <section class="omoi-section">
+    <div class="reveal">
+      <p class="omoi-eyebrow">Our Story</p>
+      <div class="omoi-body">
+        <p>木製パレットという、目立たないけれど<br>いくつもの現場を支えてきたもの。</p>
+        <p>私たちは1967年から、ただ「運ぶ」だけでなく、<br>木のぬくもりが場所をかたちづくる瞬間に<br>寄り添い続けてきました。</p>
+        <p>工場、病院、保育園、商店街——<br>パレットが届く先に、いつも人の営みがある。<br>その場所と人の物語を、これからも丁寧に紡いでいきます。</p>
+      </div>
+      <p class="omoi-placeholder">※ 想いの文章はこちらに入ります</p>
+    </div>
+  </section>
+
+  <!-- WAVE: dark → cream -->
+  <svg class="wave" viewBox="0 0 1440 48" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+    <path d="M0,48 C240,0 480,48 720,24 C960,0 1200,48 1440,24 L1440,0 L0,0 Z" fill="#0f1f12"/>
+    <path d="M0,48 C240,0 480,48 720,24 C960,0 1200,48 1440,24 L1440,48 Z" fill="#d6cfc0"/>
+  </svg>
+
+  <!-- 会社概要 -->
+  <section class="kaisha-section">
+    <div class="section-inner reveal">
+      <p class="section-eyebrow">Company Profile</p>
+      <h2 class="section-heading">会社概要</h2>
+      <table class="kaisha-table">
+        <tr>
+          <th>商号</th>
+          <td>株式会社SATO COMPANY</td>
+        </tr>
+        <tr>
+          <th>代表者名</th>
+          <td>舘野真理子</td>
+        </tr>
+        <tr>
+          <th>創立</th>
+          <td>1967年10月</td>
+        </tr>
+        <tr>
+          <th>資本金</th>
+          <td>10,000千円</td>
+        </tr>
+        <tr>
+          <th>従業員</th>
+          <td>25名</td>
+        </tr>
+        <tr>
+          <th>事業内容</th>
+          <td>
+            <ul class="jigyou-list">
+              <li>木製パレット回収・修理・製作</li>
+              <li>木製パレット・木材加工の製造販売</li>
+              <li>産業廃棄物収集運搬</li>
+            </ul>
+          </td>
+        </tr>
+        <tr>
+          <th>所在地</th>
+          <td>
+            <div class="address-row">
+              <span class="address-label">本社</span>
+              <span>東京都中野区本町4丁目6番23号</span>
+            </div>
+            <div class="address-row">
+              <span class="address-label">支店</span>
+              <span>埼玉県戸田市美女木2丁目4番地18号</span>
+            </div>
+            <div class="address-row">
+              <span class="address-label">浦和工場</span>
+              <span>埼玉県さいたま市桜区田島7丁目19番15号</span>
+            </div>
+            <div class="address-row">
+              <span class="address-label">岩槻工場</span>
+              <span>埼玉県さいたま市岩槻区大字末田178番地1号</span>
+            </div>
+            <div class="address-row">
+              <span class="address-label">配送センター</span>
+              <span>埼玉県戸田市大字新曽399番地</span>
+            </div>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </section>
+
+  <!-- WAVE: cream → dark2 -->
+  <svg class="wave" viewBox="0 0 1440 48" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+    <path d="M0,0 C240,48 480,0 720,24 C960,48 1200,0 1440,24 L1440,48 L0,48 Z" fill="#d6cfc0"/>
+    <path d="M0,0 C240,48 480,0 720,24 C960,48 1200,0 1440,24 L1440,0 Z" fill="#162819"/>
+  </svg>
+
+  <!-- 歩み -->
+  <section class="ayumi-section">
+    <div class="ayumi-inner reveal">
+      <p class="ayumi-eyebrow">History</p>
+      <h2 class="ayumi-heading">歩み</h2>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <p class="timeline-year">1965</p>
+          <p class="timeline-event">創業者・佐藤一朗が東京いすゞ自動車株式会社を退職し独立。運送業の経営に従事。</p>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <p class="timeline-year">1967</p>
+          <p class="timeline-event">製紙用パレット回収業の業務を開始。</p>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <p class="timeline-year">1970</p>
+          <p class="timeline-event">株式会社佐藤商店設立、資本金1,000千円。</p>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <p class="timeline-year">1973</p>
+          <p class="timeline-event">通産省の指導により、製紙業界の省資源化を目的とした株式会社製紙パレット機構が設立。同社の指定業者となり、回収業が体制として整備される。</p>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <p class="timeline-year">2014</p>
+          <p class="timeline-event">代表取締役に舘野真理子就任。</p>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <p class="timeline-year">2019</p>
+          <p class="timeline-event">株式会社SATO COMPANYに社名変更。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BACK TO TOP -->
+  <div class="back-to-top">
+    <a href="marupa-meets.html" class="btn-top">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+      サイトのトップへ
+    </a>
+  </div>
+
+  <footer>
+    <p class="footer-logo">SATO COMPANY / marupa meets ...</p>
+    <p class="footer-copy">© 2026 SATO COMPANY. All rights reserved.</p>
+  </footer>
+
+  <script>
+    var obs = new IntersectionObserver(function(entries) {
+      entries.forEach(function(e) { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+    }, { threshold: 0.07 });
+    document.querySelectorAll('.reveal').forEach(function(el) { obs.observe(el); });
+
+    var LEAF_SVGS = [
+      '<svg viewBox="0 0 44 64" fill="none"><path d="M22 58 C22 58 4 44 3 28 C2 12 12 2 22 2 C32 2 42 12 41 28 C40 44 22 58 22 58Z" fill="currentColor"/><line x1="22" y1="56" x2="22" y2="4" stroke="white" stroke-width="0.7" opacity="0.25"/></svg>',
+      '<svg viewBox="0 0 28 72" fill="none"><path d="M14 66 C14 66 2 50 2 32 C2 14 8 2 14 2 C20 2 26 14 26 32 C26 50 14 66 14 66Z" fill="currentColor"/><line x1="14" y1="64" x2="14" y2="4" stroke="white" stroke-width="0.6" opacity="0.25"/></svg>',
+      '<svg viewBox="0 0 48 60" fill="none"><path d="M24 54 C24 54 2 42 2 24 C2 8 12 2 24 4 C36 2 46 8 46 24 C46 42 24 54 24 54Z" fill="currentColor"/><line x1="24" y1="52" x2="24" y2="6" stroke="white" stroke-width="0.7" opacity="0.25"/></svg>'
+    ];
+    var LEAF_COLORS = ['#a8c8aa', '#7aaa7e', '#b8d4ba', '#8ab88e', '#c8deca'];
+    function spawnLeaf() {
+      var el = document.createElement('div'); el.className = 'falling-leaf';
+      var size = Math.random() * 22 + 12, x = Math.random() * 110 - 5, dur = Math.random() * 12 + 16;
+      var delay = Math.random() * -dur, sway = Math.random() * 140 - 70, rot0 = Math.random() * 360;
+      var opacity = Math.random() * 0.10 + 0.06, color = LEAF_COLORS[Math.floor(Math.random() * LEAF_COLORS.length)];
+      el.style.cssText = 'left:' + x + 'vw;width:' + size + 'px;height:' + (size*1.5) + 'px;color:' + color + ';--r0:' + rot0 + 'deg;--sx:' + sway + 'px;--op:' + opacity + ';animation:leaf-fall ' + dur + 's linear ' + delay + 's infinite;';
+      el.innerHTML = LEAF_SVGS[Math.floor(Math.random() * LEAF_SVGS.length)];
+      document.body.appendChild(el);
+    }
+    for (var i = 0; i < 8; i++) spawnLeaf();
+    setInterval(function() { if (document.querySelectorAll('.falling-leaf').length < 14) spawnLeaf(); }, 3500);
+  </script>
+
+</body>
+</html>
