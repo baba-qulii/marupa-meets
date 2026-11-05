@@ -4,6 +4,9 @@
 # 必要なファイルだけ許可
 !marupa-meets.html
 !index.html
+!miru.html
+!kiku.html
+!yomu.html
 !NOA_9227.jpg
 !pallet-yatai.jpg
 !honnya-scene.jpg
@@ -56,8 +59,22 @@
 !favicon.png
 !ogp.png
 !panda-banner.png
+!panda-loupe.webp
+!panda-loupe.png
 !panda-neru.png
 !会社紹介.pdf
 !レンタル表.pdf
 !パレット活用事例.pdf
+!kiku-scene-01.jpg
+!kiku-scene-02.jpg
+!kiku-scene-03.jpg
+!kiku-scene-04.jpg
+!kiku-scene-05.jpg
+!kiku-scene-06.jpg
+!kiku-scene-07.jpg
+!kiku-scene-08.jpg
+!kiku-scene-09.jpg
+!kiku-scene-10.jpg
+!kiku-scene-11.jpg
+!kiku-scene-12.jpg
 !.gitignore
