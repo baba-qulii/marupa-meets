@@ -76,8 +76,8 @@
     .btn-cta { display: inline-block; padding: 13px 28px; background: var(--dark); color: #ffffff; border-radius: 8px; font-size: 14px; cursor: pointer; border: 1.5px solid var(--dark); font-weight: 500; font-family: inherit; text-decoration: none; transition: background 0.25s, color 0.25s; }
     .btn-cta:hover { background: transparent; color: var(--dark); }
     .gallery-strip { overflow: hidden; background: var(--dark); padding: 28px 0; border-top: 0.5px solid rgba(255,255,255,0.08); }
-    .gallery-track { display: flex; gap: 10px; width: max-content; animation: gallery-scroll 80s linear infinite; -webkit-transform: translate3d(0,0,0); transform: translate3d(0,0,0); -webkit-backface-visibility: hidden; backface-visibility: hidden; }
-    .gallery-item { height: 200px; width: auto; object-fit: cover; border-radius: 6px; flex-shrink: 0; display: block; -webkit-transform: translateZ(0); transform: translateZ(0); }
+    .gallery-track { display: flex; gap: 10px; width: max-content; animation: gallery-scroll 80s linear infinite; will-change: transform; -webkit-backface-visibility: hidden; backface-visibility: hidden; }
+    .gallery-item { height: 200px; width: auto; object-fit: cover; border-radius: 6px; flex-shrink: 0; display: block; }
     @media (max-width: 600px) { .concept-inner { grid-template-columns: 1fr; } .cta-buttons { flex-direction: column; align-items: center; } }
     .links-section { background: var(--dark); padding: 64px 24px; text-align: center; border-top: 0.5px solid rgba(255,255,255,0.12); }
     .links-label { font-size: 11px; letter-spacing: 0.2em; color: var(--moss-pale); text-transform: uppercase; margin-bottom: 32px; }
