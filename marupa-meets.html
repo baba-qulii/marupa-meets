@@ -327,7 +327,7 @@
     .wave-sep svg { display: block; width: 100%; }
 
     /* ── 観る ── */
-    .miru-section { background: var(--cream); padding: 96px 0 48px; }
+    .miru-section { background: var(--cream); padding: 60px 0 48px; }
     .miru-inner { max-width: 860px; margin: 0 auto; padding: 0 24px; }
 
     .vol-scroll-wrap {
@@ -699,7 +699,7 @@
 
     /* ── FOOTER ── */
     /* ── CONCEPT ── */
-    .concept-section { position: relative; background: var(--dark); padding: 72px 24px; border-top: 0.5px solid rgba(255,255,255,0.12); border-bottom: 0.5px solid rgba(255,255,255,0.12); }
+    .concept-section { position: relative; background: var(--dark); padding: 44px 24px; }
     .deco-wrap { position: absolute; inset: 0; overflow: hidden; pointer-events: none; }
     .deco-pallet { position: absolute; opacity: 0.06; }
     .deco-pallet svg { animation: pallet-float 12s ease-in-out infinite; }
@@ -713,7 +713,7 @@
     .tag-row { display: flex; gap: 8px; flex-wrap: wrap; }
     .tag { font-size: 12px; padding: 4px 12px; background: #ffffff; color: var(--dark); border-radius: 20px; font-weight: 500; }
     /* ── CTA ── */
-    .cta-section { padding: 80px 24px; text-align: center; background: var(--cream); border-top: 0.5px solid #b8b0a0; }
+    .cta-section { padding: 48px 24px; text-align: center; background: var(--cream); }
     .cta-label { font-size: 11px; letter-spacing: 0.18em; color: var(--moss-light); text-transform: uppercase; margin-bottom: 12px; }
     .cta-title { font-size: 22px; font-weight: 500; color: var(--dark); margin-bottom: 12px; }
     .cta-body { font-size: 14px; color: #3a3830; line-height: 1.85; margin-bottom: 32px; }
@@ -723,7 +723,7 @@
     @media (max-width: 600px) { .concept-inner { grid-template-columns: 1fr; } .cta-buttons { flex-direction: column; align-items: center; } }
     /* ── LINKS ── */
     @keyframes gallery-scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
-    .gallery-strip { overflow: hidden; background: var(--dark); padding: 28px 0; border-top: 0.5px solid rgba(255,255,255,0.08); }
+    .gallery-strip { overflow: hidden; background: var(--dark); padding: 28px 0; }
     .gallery-track { display: flex; gap: 10px; width: max-content; will-change: transform; -webkit-backface-visibility: hidden; backface-visibility: hidden; }
     .gallery-item { height: 200px; width: auto; object-fit: cover; border-radius: 6px; flex-shrink: 0; display: block; }
     .kiku-gallery-strip { overflow: hidden; background: var(--dark2); padding: 20px 0 48px; border-top: 0.5px solid rgba(168,200,170,0.12); }
@@ -958,6 +958,11 @@
     </div>
   </section>
 
+  <!-- wave: dark2 → cream -->
+  <div class="wave-sep" style="background:var(--dark2)">
+    <svg viewBox="0 0 1200 48" preserveAspectRatio="none" height="48"><path d="M0,32 C180,8 320,44 500,22 C680,4 820,40 1000,18 C1080,10 1150,36 1200,28 L1200,48 L0,48 Z" fill="#d6cfc0"/></svg>
+  </div>
+
   <!-- 観る -->
   <section id="miru" class="miru-section">
     <div class="miru-inner">
@@ -1021,9 +1026,9 @@
     </div>
   </section>
 
-  <!-- wave: cream → dark -->
+  <!-- wave: cream → dark2 -->
   <div class="wave-sep" style="background:var(--cream)">
-    <svg viewBox="0 0 1200 40" preserveAspectRatio="none" height="40"><path d="M0,20 C150,4 300,36 450,20 C600,4 750,36 900,20 C1050,4 1200,36 1200,20 L1200,40 L0,40 Z" fill="#162819"/></svg>
+    <svg viewBox="0 0 1200 48" preserveAspectRatio="none" height="48"><path d="M0,18 C200,42 400,6 600,30 C800,46 1000,8 1200,22 L1200,48 L0,48 Z" fill="#162819"/></svg>
   </div>
 
   <!-- 聴く -->
@@ -1085,9 +1090,9 @@
     </div>
   </div>
 
-  <!-- wave: dark → cream -->
+  <!-- wave: dark2 → cream -->
   <div class="wave-sep" style="background:var(--dark2)">
-    <svg viewBox="0 0 1200 40" preserveAspectRatio="none" height="40"><path d="M0,20 C150,36 300,4 450,20 C600,36 750,4 900,20 C1050,36 1200,4 1200,20 L1200,40 L0,40 Z" fill="#d6cfc0"/></svg>
+    <svg viewBox="0 0 1200 48" preserveAspectRatio="none" height="48"><path d="M0,24 C150,10 250,38 400,24 C550,10 700,38 850,20 C1000,10 1100,38 1200,26 L1200,48 L0,48 Z" fill="#d6cfc0"/></svg>
   </div>
 
   <!-- 読む -->
@@ -1144,6 +1149,11 @@
     </div>
   </section>
 
+  <!-- wave: cream → dark -->
+  <div class="wave-sep" style="background:var(--cream)">
+    <svg viewBox="0 0 1200 48" preserveAspectRatio="none" height="48"><path d="M0,12 C150,40 350,4 550,36 C700,44 900,8 1100,32 C1150,36 1180,24 1200,20 L1200,48 L0,48 Z" fill="#0f1f12"/></svg>
+  </div>
+
   <!-- CONCEPT -->
   <section class="concept-section">
     <div class="deco-wrap">
@@ -1178,6 +1188,11 @@
     </div>
   </section>
 
+  <!-- wave: dark → cream -->
+  <div class="wave-sep" style="background:var(--dark)">
+    <svg viewBox="0 0 1200 48" preserveAspectRatio="none" height="48"><path d="M0,30 C200,4 500,44 700,16 C850,4 1000,42 1200,24 L1200,48 L0,48 Z" fill="#d6cfc0"/></svg>
+  </div>
+
   <!-- CTA -->
   <section class="cta-section">
     <p class="cta-label">Catalogue</p>
@@ -1189,6 +1204,11 @@
       <a href="レンタル表.pdf" target="_blank" class="btn-cta">パレットレンタル表</a>
     </div>
   </section>
+
+  <!-- wave: cream → dark -->
+  <div class="wave-sep" style="background:var(--cream)">
+    <svg viewBox="0 0 1200 48" preserveAspectRatio="none" height="48"><path d="M0,20 C100,38 200,10 300,28 C400,42 500,8 650,30 C800,46 950,6 1100,24 C1150,30 1180,20 1200,22 L1200,48 L0,48 Z" fill="#0f1f12"/></svg>
+  </div>
 
   <!-- GALLERY STRIP -->
   <div class="gallery-strip">
