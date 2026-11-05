@@ -325,8 +325,9 @@
     }
     .vol-scroll-wrap::-webkit-scrollbar { display: none; }
     @media (max-width: 600px) {
-      .vol-scroll-wrap { justify-content: flex-start; padding: 8px 40px 24px; }
+      .vol-scroll-wrap { justify-content: flex-start; padding: 8px 0 24px 40px; }
       .vol-card { scroll-snap-align: center; }
+      .vol-card:last-child { margin-right: 40px; }
     }
 
     .vol-card {
