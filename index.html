@@ -155,6 +155,23 @@
       animation: fadeUp 0.7s ease 1.4s forwards;
       margin-bottom: 10px;
     }
+    .tagline-mark {
+      position: relative;
+      display: inline-block;
+    }
+    .tagline-mark::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      right: 0;
+      height: 1.5px;
+      background: var(--wood);
+      transform: scaleX(0);
+      transform-origin: left;
+      animation: taglineUnderline 0.6s cubic-bezier(0.16, 1, 0.3, 1) 2.2s forwards;
+    }
+    @keyframes taglineUnderline { to { transform: scaleX(1); } }
     .hero-sub-tagline {
       font-size: clamp(16px, 2.4vw, 19px);
       color: rgba(214, 207, 192, 0.55);
@@ -322,6 +339,10 @@
       margin-top: 14px;
     }
 
+    /* ── wave separators ── */
+    .wave-sep { line-height: 0; display: block; overflow: hidden; }
+    .wave-sep svg { display: block; width: 100%; }
+
     /* ── 観る ── */
     .miru-section { background: var(--cream); padding: 96px 0 48px; }
     .miru-inner { max-width: 860px; margin: 0 auto; padding: 0 24px; }
@@ -432,11 +453,13 @@
       transition: background 0.3s, transform 0.2s;
     }
     .miru-more:hover { background: var(--wood-light); transform: translateY(-2px); }
+    .miru-more svg, .spotify-cta svg { transition: transform 0.25s ease; flex-shrink: 0; }
+    .miru-more:hover svg, .spotify-cta:hover svg { transform: translateX(5px); }
 
     /* ── 聴く ── */
     .kiku-section {
       background: var(--dark2);
-      padding: 96px 24px 48px;
+      padding: 60px 24px 48px;
       color: var(--cream);
     }
     .kiku-inner { max-width: 860px; margin: 0 auto; }
@@ -601,7 +624,7 @@
     }
 
     /* ── 読む ── */
-    .yomu-section { background: var(--cream); padding: 96px 24px 48px; }
+    .yomu-section { background: var(--cream); padding: 60px 24px 48px; }
     .yomu-inner { max-width: 860px; margin: 0 auto; }
     .yomu-desc { font-size: 14px; color: rgba(26, 46, 29, 0.55); line-height: 2; text-align: center; margin: 0 auto 36px; max-width: 540px; }
 
@@ -924,7 +947,7 @@
         <span class="hero-word">meets</span>
         <span class="hero-word">...</span>
       </h1>
-      <p class="hero-tagline">「運ぶ、だけじゃない。」</p>
+      <p class="hero-tagline"><span class="tagline-mark">「運ぶ、だけじゃない。」</span></p>
       <p class="hero-sub-tagline">パレットから広がる、人と場所の物語。</p>
       <div class="hero-cats">
         <a href="#miru" class="hero-cat">観る</a>
@@ -1015,6 +1038,11 @@
     </div>
   </section>
 
+  <!-- wave: cream → dark -->
+  <div class="wave-sep" style="background:var(--cream)">
+    <svg viewBox="0 0 1200 40" preserveAspectRatio="none" height="40"><path d="M0,20 C150,4 300,36 450,20 C600,4 750,36 900,20 C1050,4 1200,36 1200,20 L1200,40 L0,40 Z" fill="#162819"/></svg>
+  </div>
+
   <!-- 聴く -->
   <section id="kiku" class="kiku-section">
     <div class="kiku-inner">
@@ -1072,6 +1100,11 @@
       <img class="kiku-gallery-item" src="kiku-scene-11.jpg" alt="">
       <img class="kiku-gallery-item" src="kiku-scene-12.jpg" alt="">
     </div>
+  </div>
+
+  <!-- wave: dark → cream -->
+  <div class="wave-sep" style="background:var(--dark2)">
+    <svg viewBox="0 0 1200 40" preserveAspectRatio="none" height="40"><path d="M0,20 C150,36 300,4 450,20 C600,36 750,4 900,20 C1050,36 1200,4 1200,20 L1200,40 L0,40 Z" fill="#d6cfc0"/></svg>
   </div>
 
   <!-- 読む -->
