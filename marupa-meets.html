@@ -301,6 +301,19 @@
       font-weight: 400;
       letter-spacing: -0.01em;
       line-height: 1;
+      position: relative;
+      padding-bottom: 12px;
+    }
+    .section-title-en::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 24px;
+      height: 2px;
+      background: var(--wood);
+      border-radius: 1px;
     }
     .section-title-sub {
       font-size: 11px;
@@ -361,7 +374,9 @@
       background: linear-gradient(135deg, #1a2e1d 0%, #2d5230 100%);
       background-size: cover;
       background-position: center;
+      transition: transform 0.5s ease;
     }
+    .vol-card:hover .vol-card-thumb-bg { transform: scale(1.07); }
     .vol-card-play {
       position: relative;
       z-index: 1;
@@ -406,16 +421,17 @@
       align-items: center;
       gap: 10px;
       padding: 14px 32px;
-      background: var(--dark3);
-      color: var(--cream);
+      background: var(--wood);
+      color: var(--dark);
       text-decoration: none;
       border-radius: 40px;
       font-size: 12px;
       letter-spacing: 0.18em;
       font-family: sans-serif;
-      transition: background 0.3s;
+      font-weight: 500;
+      transition: background 0.3s, transform 0.2s;
     }
-    .miru-more:hover { background: var(--moss-light); }
+    .miru-more:hover { background: var(--wood-light); transform: translateY(-2px); }
 
     /* ── 聴く ── */
     .kiku-section {
@@ -620,7 +636,9 @@
       font-size: 9px;
       letter-spacing: 0.22em;
       font-family: sans-serif;
+      transition: transform 0.5s ease;
     }
+    .article-card:hover .article-thumb-bg { transform: scale(1.05); }
     .article-card.featured .article-thumb-bg { aspect-ratio: 21/9; }
     .bg-a { background: linear-gradient(135deg, #c8a97e 0%, #8a6438 100%); color: rgba(255,255,255,0.35); }
     .bg-b { background: linear-gradient(135deg, #8aaa78 0%, #4d6a40 100%); color: rgba(255,255,255,0.35); }
@@ -661,16 +679,17 @@
       align-items: center;
       gap: 10px;
       padding: 14px 32px;
-      background: var(--dark3);
-      color: var(--cream);
+      background: var(--wood);
+      color: var(--dark);
       text-decoration: none;
       border-radius: 40px;
       font-size: 12px;
       letter-spacing: 0.18em;
       font-family: sans-serif;
-      transition: background 0.3s;
+      font-weight: 500;
+      transition: background 0.3s, transform 0.2s;
     }
-    .note-cta:hover { background: var(--moss-light); }
+    .note-cta:hover { background: var(--wood-light); transform: translateY(-2px); }
 
     /* ── FOOTER ── */
     /* ── CONCEPT ── */
@@ -707,13 +726,13 @@
     .links-section { background: var(--dark); padding: 64px 24px; text-align: center; border-top: 0.5px solid rgba(255,255,255,0.12); }
     .links-label { font-size: 11px; letter-spacing: 0.2em; color: var(--moss-pale); text-transform: uppercase; margin-bottom: 32px; }
     .links-grid { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; max-width: 600px; margin: 0 auto; }
-    .link-card { display: flex; flex-direction: column; align-items: center; gap: 8px; padding: 24px 28px; background: rgba(255,255,255,0.05); border: 0.5px solid rgba(255,255,255,0.12); border-radius: 12px; text-decoration: none; color: #ffffff; transition: background 0.2s; min-width: 140px; }
+    .link-card { display: flex; flex-direction: column; align-items: center; gap: 8px; padding: 24px 28px; background: rgba(255,255,255,0.05); border: 0.5px solid rgba(255,255,255,0.12); border-radius: 12px; text-decoration: none; color: #ffffff; transition: background 0.2s, transform 0.2s, border-color 0.2s; min-width: 140px; }
     @media (max-width: 600px) {
       .links-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; max-width: 100%; }
       .link-card { min-width: 0; padding: 16px 8px; }
       .link-url { font-size: 9px; word-break: break-all; }
     }
-    .link-card:hover { background: rgba(255,255,255,0.1); }
+    .link-card:hover { background: rgba(255,255,255,0.1); transform: translateY(-4px); border-color: rgba(196,160,106,0.4); }
     .link-icon { color: var(--moss-pale); }
     .link-name { font-size: 13px; letter-spacing: 0.1em; }
     .link-url { font-size: 11px; color: rgba(168,200,170,0.5); letter-spacing: 0.05em; font-family: sans-serif; }
@@ -937,7 +956,7 @@
   <section id="miru" class="miru-section">
     <div class="miru-inner">
       <div class="section-headline reveal">
-        <span class="section-num" style="color:rgba(26,46,29,0.4)">01</span>
+        <span class="section-num" style="color:var(--wood)">01</span>
         <div>
           <div class="section-title-en">観る</div>
           <div class="section-title-sub">marupa meets シリーズ</div>
@@ -1000,7 +1019,7 @@
   <section id="kiku" class="kiku-section">
     <div class="kiku-inner">
       <div class="section-headline reveal">
-        <span class="section-num" style="color:rgba(168,200,170,0.55)">02</span>
+        <span class="section-num" style="color:rgba(196,160,106,0.75)">02</span>
         <div>
           <div class="section-title-en" style="color:var(--cream)">聴く</div>
           <div class="section-title-sub" style="color:var(--moss-pale)">Podcast</div>
@@ -1059,7 +1078,7 @@
   <section id="yomu" class="yomu-section">
     <div class="yomu-inner">
       <div class="section-headline reveal">
-        <span class="section-num" style="color:rgba(26,46,29,0.4)">03</span>
+        <span class="section-num" style="color:var(--wood)">03</span>
         <div>
           <div class="section-title-en">読む</div>
           <div class="section-title-sub">note</div>
