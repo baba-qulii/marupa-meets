@@ -324,7 +324,7 @@
       padding: 8px 24px 24px;
     }
     .vol-scroll-wrap::-webkit-scrollbar { display: none; }
-    @media (max-width: 600px) {
+    @media (max-width: 1100px) {
       .vol-scroll-wrap { justify-content: flex-start; padding: 8px 0 24px 40px; }
       .vol-card { scroll-snap-align: center; }
       .vol-card:last-child { margin-right: 40px; }
@@ -1412,7 +1412,7 @@
   </script>
   <script>
     (function() {
-      if (window.innerWidth > 600) return;
+      if (window.innerWidth > 1100) return;
       var wrap = document.querySelector('.vol-scroll-wrap');
       if (!wrap) return;
       var cards = wrap.querySelectorAll('.vol-card');
