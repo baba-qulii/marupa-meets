@@ -699,11 +699,11 @@
     /* ── LINKS ── */
     @keyframes gallery-scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
     .gallery-strip { overflow: hidden; background: var(--dark); padding: 28px 0; border-top: 0.5px solid rgba(255,255,255,0.08); }
-    .gallery-track { display: flex; gap: 10px; width: max-content; animation: gallery-scroll 80s linear infinite; will-change: transform; }
-    .gallery-item { height: 200px; width: auto; object-fit: cover; border-radius: 6px; flex-shrink: 0; display: block; }
-    .kiku-gallery-strip { overflow: hidden; background: var(--dark2); padding: 20px 0 48px; border-top: 0.5px solid rgba(168,200,170,0.12); }
-    .kiku-gallery-track { display: flex; gap: 10px; width: max-content; animation: gallery-scroll 60s linear infinite; will-change: transform; }
-    .kiku-gallery-item { height: 180px; width: auto; object-fit: cover; border-radius: 6px; flex-shrink: 0; display: block; }
+    .gallery-track { display: flex; gap: 10px; width: max-content; animation: gallery-scroll 80s linear infinite; -webkit-transform: translate3d(0,0,0); transform: translate3d(0,0,0); -webkit-backface-visibility: hidden; backface-visibility: hidden; }
+    .gallery-item { height: 200px; width: auto; object-fit: cover; border-radius: 6px; flex-shrink: 0; display: block; -webkit-transform: translateZ(0); transform: translateZ(0); }
+    .kiku-gallery-strip { overflow: hidden; background: var(--dark2); padding: 20px 0 48px; border-top: 0.5px solid rgba(168,200,170,0.12); -webkit-transform: translateZ(0); transform: translateZ(0); }
+    .kiku-gallery-track { display: flex; gap: 10px; width: max-content; animation: gallery-scroll 60s linear infinite; -webkit-transform: translate3d(0,0,0); transform: translate3d(0,0,0); -webkit-backface-visibility: hidden; backface-visibility: hidden; }
+    .kiku-gallery-item { height: 180px; width: auto; object-fit: cover; border-radius: 6px; flex-shrink: 0; display: block; -webkit-transform: translateZ(0); transform: translateZ(0); }
     .links-section { background: var(--dark); padding: 64px 24px; text-align: center; border-top: 0.5px solid rgba(255,255,255,0.12); }
     .links-label { font-size: 11px; letter-spacing: 0.2em; color: var(--moss-pale); text-transform: uppercase; margin-bottom: 32px; }
     .links-grid { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; max-width: 600px; margin: 0 auto; }

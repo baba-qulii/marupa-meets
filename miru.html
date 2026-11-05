@@ -85,8 +85,8 @@
 
     /* GALLERY STRIP */
     .vol-gallery-strip { overflow: hidden; background: var(--cream); padding: 16px 0 48px; -webkit-mask-image: linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%); mask-image: linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%); }
-    .vol-gallery-track { display: flex; gap: 10px; width: max-content; animation: gallery-scroll 50s linear infinite; will-change: transform; }
-    .vol-gallery-item { height: 180px; width: auto; min-width: 240px; object-fit: cover; border-radius: 6px; flex-shrink: 0; display: block; }
+    .vol-gallery-track { display: flex; gap: 10px; width: max-content; animation: gallery-scroll 50s linear infinite; -webkit-transform: translate3d(0,0,0); transform: translate3d(0,0,0); -webkit-backface-visibility: hidden; backface-visibility: hidden; }
+    .vol-gallery-item { height: 180px; width: auto; min-width: 240px; object-fit: cover; border-radius: 6px; flex-shrink: 0; display: block; -webkit-transform: translateZ(0); transform: translateZ(0); }
     @keyframes gallery-scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
 
     /* FOOTER */
@@ -143,8 +143,8 @@
 
     /* GALLERY STRIP (dark) */
     .gallery-strip { overflow: hidden; background: var(--bg3); padding: 28px 0; border-top: 0.5px solid rgba(255,255,255,0.08); }
-    .gallery-track { display: flex; gap: 10px; width: max-content; animation: gallery-scroll 80s linear infinite; will-change: transform; }
-    .gallery-item { height: 200px; width: auto; object-fit: cover; border-radius: 6px; flex-shrink: 0; display: block; }
+    .gallery-track { display: flex; gap: 10px; width: max-content; animation: gallery-scroll 80s linear infinite; -webkit-transform: translate3d(0,0,0); transform: translate3d(0,0,0); -webkit-backface-visibility: hidden; backface-visibility: hidden; }
+    .gallery-item { height: 200px; width: auto; object-fit: cover; border-radius: 6px; flex-shrink: 0; display: block; -webkit-transform: translateZ(0); transform: translateZ(0); }
 
     /* LINKS */
     .links-section { background: var(--bg3); padding: 64px 24px; text-align: center; border-top: 0.5px solid rgba(255,255,255,0.12); }
@@ -539,5 +539,6 @@
     for (var i = 0; i < 8; i++) spawnLeaf();
     setInterval(function() { if (document.querySelectorAll('.falling-leaf').length < 14) spawnLeaf(); }, 3500);
   </script>
+
 </body>
 </html>
