@@ -324,6 +324,9 @@
       padding: 8px 24px 24px;
     }
     .vol-scroll-wrap::-webkit-scrollbar { display: none; }
+    @media (max-width: 600px) {
+      .vol-scroll-wrap { justify-content: flex-start; padding-left: 20px; }
+    }
 
     .vol-card {
       flex-shrink: 0;
