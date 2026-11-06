@@ -228,6 +228,12 @@
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
       トップへ戻る
     </a>
+
+    <button class="pc-menu-btn" id="pc-menu-btn" aria-label="メニューを開く">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+        <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>
+      </svg>
+    </button>
   </header>
 
   <div class="page-hero">
@@ -1144,5 +1150,100 @@
     })();
   </script>
 
+
+  <!-- SP MENU OVERLAY -->
+  <div class="sp-menu-overlay" id="sp-menu-overlay">
+    <div class="sp-menu-bg" id="sp-menu-bg"></div>
+    <div class="sp-menu-panel">
+      <div class="sp-menu-handle"></div>
+      <ul class="sp-menu-list">
+        <li>
+          <a href="about.html">
+            <svg class="menu-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+            marupa meets ... について
+            <span class="sp-menu-label-sub">About</span>
+          </a>
+        </li>
+        <li>
+          <a href="miru.html">
+            <svg class="menu-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>
+            観る
+            <span class="sp-menu-label-sub">Video</span>
+          </a>
+        </li>
+        <li>
+          <a href="kiku.html">
+            <svg class="menu-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/></svg>
+            聴く
+            <span class="sp-menu-label-sub">Podcast</span>
+          </a>
+        </li>
+        <li>
+          <a href="yomu.html">
+            <svg class="menu-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+            読む
+            <span class="sp-menu-label-sub">note</span>
+          </a>
+        </li>
+        <li class="sp-menu-divider"></li>
+        <li class="sp-menu-section-label">LINKS</li>
+        <li>
+          <a href="https://ugc.production.linktr.ee/44dd3b2e-d357-4bfa-a841-3c2078de53dc_--------.pdf" target="_blank" rel="noopener">
+            <svg class="menu-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+            会社パンフレット
+            <span class="sp-menu-label-sub" style="margin-left:auto;display:flex;align-items:center;gap:6px;">PDF<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="opacity:0.5;flex-shrink:0"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></span>
+          </a>
+        </li>
+        <li>
+          <a href="https://ugc.production.linktr.ee/eb45d69f-fbad-415e-a986-c14d8369fb61_--------------.pdf" target="_blank" rel="noopener">
+            <svg class="menu-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+            活用事例集
+            <span class="sp-menu-label-sub" style="margin-left:auto;display:flex;align-items:center;gap:6px;">PDF<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="opacity:0.5;flex-shrink:0"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></span>
+          </a>
+        </li>
+        <li>
+          <a href="https://marupa.jp/" target="_blank" rel="noopener">
+            <svg class="menu-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+            公式HP
+            <span class="sp-menu-label-sub" style="margin-left:auto;display:flex;align-items:center;gap:6px;">marupa.jp<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="opacity:0.5;flex-shrink:0"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></span>
+          </a>
+        </li>
+        <li>
+          <a href="https://www.instagram.com/satocompany_marupa/" target="_blank" rel="noopener">
+            <svg class="menu-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor"/></svg>
+            Instagram
+            <span class="sp-menu-label-sub">@satocompany_marupa</span>
+          </a>
+        </li>
+        <li>
+          <a href="https://marupa.jp/contact/" target="_blank" rel="noopener">
+            <svg class="menu-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            お問い合わせ
+            <span class="sp-menu-label-sub" style="margin-left:auto;display:flex;align-items:center;gap:6px;">Contact<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="opacity:0.5;flex-shrink:0"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <script>
+    // Hamburger menu
+    var pcMenuBtn = document.getElementById('pc-menu-btn');
+    var spMenuOverlay = document.getElementById('sp-menu-overlay');
+    var spMenuBg = document.getElementById('sp-menu-bg');
+    function openMenu() { spMenuOverlay.classList.add('open'); document.body.style.overflow = 'hidden'; }
+    function closeMenu() { spMenuOverlay.classList.remove('open'); document.body.style.overflow = ''; }
+    if (pcMenuBtn) pcMenuBtn.addEventListener('click', openMenu);
+    if (spMenuBg) spMenuBg.addEventListener('click', closeMenu);
+    document.querySelectorAll('.sp-menu-list a').forEach(function(a) {
+      a.addEventListener('click', closeMenu);
+    });
+    var spMenuPanel = document.querySelector('.sp-menu-panel');
+    var touchStartY = 0;
+    if (spMenuPanel) {
+      spMenuPanel.addEventListener('touchstart', function(e) { touchStartY = e.touches[0].clientY; }, { passive: true });
+      spMenuPanel.addEventListener('touchend', function(e) { if (e.changedTouches[0].clientY - touchStartY > 60) closeMenu(); }, { passive: true });
+    }
+  </script>
 </body>
 </html>
