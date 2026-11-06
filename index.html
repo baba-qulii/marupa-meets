@@ -57,6 +57,7 @@
       padding: 15px 40px;
       border-bottom-color: rgba(168, 200, 170, 0.15);
     }
+    .header-left { display: flex; align-items: center; gap: 36px; }
     .header-logo {
       font-size: 13px;
       letter-spacing: 0.22em;
@@ -944,14 +945,16 @@
 
   <!-- HEADER -->
   <header class="site-header" id="site-header">
-    <a href="#" class="header-logo">marupa meets ...</a>
-    <nav>
-      <ul class="cat-nav" id="cat-nav">
-        <li><a href="#miru" data-section="miru">観る</a></li>
-        <li><a href="#kiku" data-section="kiku">聴く</a></li>
-        <li><a href="#yomu" data-section="yomu">読む</a></li>
-      </ul>
-    </nav>
+    <div class="header-left">
+      <a href="#" class="header-logo">marupa meets ...</a>
+      <nav>
+        <ul class="cat-nav" id="cat-nav">
+          <li><a href="#miru" data-section="miru">観る</a></li>
+          <li><a href="#kiku" data-section="kiku">聴く</a></li>
+          <li><a href="#yomu" data-section="yomu">読む</a></li>
+        </ul>
+      </nav>
+    </div>
     <button class="pc-menu-btn" id="pc-menu-btn" aria-label="メニューを開く">
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
         <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>
